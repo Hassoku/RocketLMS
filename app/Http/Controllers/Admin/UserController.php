@@ -50,19 +50,24 @@ class UserController extends Controller
 
     public function organizations(Request $request, $is_export_excel = false)
     {
+
         $this->authorize('admin_organizations_list');
 
         $query = User::where('role_name', Role::$organization);
 
         $totalOrganizations = deepClone($query)->count();
+
         $verifiedOrganizations = deepClone($query)->where('verified', true)
             ->count();
+
         $totalOrganizationsTeachers = User::where('role_name', Role::$teacher)
             ->whereNotNull('organ_id')
             ->count();
+
         $totalOrganizationsStudents = User::where('role_name', Role::$user)
             ->whereNotNull('organ_id')
             ->count();
+
         $userGroups = Group::where('status', 'active')
             ->orderBy('created_at', 'desc')
             ->get();
@@ -71,11 +76,16 @@ class UserController extends Controller
         $query = $this->filters($query, $request);
 
         if ($is_export_excel) {
+
+
             $users = $query->orderBy('created_at', 'desc')->get();
         } else {
             $users = $query->orderBy('created_at', 'desc')
                 ->paginate(10);
+
         }
+        $users = $query->orderBy('created_at', 'desc')
+                ->paginate(10);
 
 
         $users = $this->addUsersExtraInfo($users);
@@ -93,6 +103,8 @@ class UserController extends Controller
             'totalOrganizationsStudents' => $totalOrganizationsStudents,
             'userGroups' => $userGroups,
         ];
+
+
 
         return view('admin.users.organizations', $data);
     }
