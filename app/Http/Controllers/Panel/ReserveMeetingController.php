@@ -16,6 +16,7 @@ class ReserveMeetingController extends Controller
 {
     public function reservation(Request $request)
     {
+
         $user = auth()->user();
         $reserveMeetingsQuery = ReserveMeeting::where('user_id', $user->id)
             ->whereHas('sale');
@@ -32,7 +33,9 @@ class ReserveMeetingController extends Controller
             ->get();
 
 
+
         $reserveMeetingsQuery = $this->filters($reserveMeetingsQuery, $request);
+
         $reserveMeetingsQuery = $reserveMeetingsQuery->with([
             'meetingTime',
             'meeting' => function ($query) {
@@ -47,6 +50,7 @@ class ReserveMeetingController extends Controller
             },
             'sale'
         ]);
+
 
         $reserveMeetings = $reserveMeetingsQuery
             ->orderBy('created_at', 'desc')
@@ -135,6 +139,7 @@ class ReserveMeetingController extends Controller
 
     public function filters($query, $request)
     {
+
         $from = $request->get('from');
         $to = $request->get('to');
         $day = $request->get('day');

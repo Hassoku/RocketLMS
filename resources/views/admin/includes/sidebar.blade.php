@@ -699,7 +699,7 @@
                 </li>
             @endcan
 
-            @if($authUser->can('admin_discount_codes') or
+            {{-- @if($authUser->can('admin_discount_codes') or
                 $authUser->can('admin_product_discount') or
                 $authUser->can('admin_feature_webinars') or
                 $authUser->can('admin_promotion') or
@@ -707,9 +707,9 @@
                 $authUser->can('admin_newsletters_lists')
             )
                 <li class="menu-header">{{ trans('admin/main.marketing') }}</li>
-            @endif
+            @endif --}}
 
-            @can('admin_discount_codes')
+            {{-- @can('admin_discount_codes')
                 <li class="nav-item dropdown {{ (request()->is('admin/financial/discounts*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-percent"></i>
@@ -831,11 +831,11 @@
                         <span>{{ trans('admin/main.newsletters') }}</span>
                     </a>
                 </li>
-            @endcan
+            @endcan --}}
 
-            @if($authUser->can('admin_settings'))
+            {{-- @if($authUser->can('admin_settings'))
                 <li class="menu-header">{{ trans('admin/main.settings') }}</li>
-            @endif
+            @endif --}}
 
             @can('admin_settings')
                 @php
@@ -853,12 +853,12 @@
                         }
                 @endphp
 
-                <li class="{{ $settingClass ?? '' }}">
+                {{-- <li class="{{ $settingClass ?? '' }}">
                     <a href="/admin/settings" class="nav-link">
                         <i class="fas fa-cogs"></i>
                         <span>{{ trans('admin/main.settings') }}</span>
                     </a>
-                </li>
+                </li> --}}
             @endcan()
 
 

@@ -33,6 +33,7 @@ class CommentsController extends Controller
 
     public function index(Request $request)
     {
+
         $this->authorize('admin_' . $this->item . '_comments');
 
         $query = Comment::whereNotNull($this->item_column);
@@ -77,6 +78,7 @@ class CommentsController extends Controller
         if (!empty($post_ids)) {
             $data['blog'] = Blog::select('id', 'title')->whereIn('id', $post_ids)->get();
         }
+
 
         return view('admin.comments.comments', $data);
     }

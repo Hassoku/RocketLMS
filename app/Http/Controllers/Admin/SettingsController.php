@@ -13,6 +13,7 @@ class SettingsController extends Controller
 {
     public function index()
     {
+
         $this->authorize('admin_settings');
 
         $data = [
