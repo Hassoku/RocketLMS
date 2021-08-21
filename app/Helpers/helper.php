@@ -1,4 +1,8 @@
 <?php
+ function test(){
+
+    return "test";
+}
 
 function getTemplate()
 {
@@ -1277,4 +1281,7 @@ function checkCourseForSale($course, $user)
     }
 
     return 'ok';
+
+
+
 }
