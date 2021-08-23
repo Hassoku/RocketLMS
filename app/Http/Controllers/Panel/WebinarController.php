@@ -233,21 +233,26 @@ class WebinarController extends Controller
 
     public function store(Request $request)
     {
+
         $user = auth()->user();
 
         if (!$user->isTeacher() and !$user->isOrganization()) {
             abort(404);
         }
 
+
+
         $currentStep = $request->get('current_step', 1);
 
         $rules = [
-            'type' => 'required|in:webinar,course,text_lesson',
+            'type' => 'required',
             'title' => 'required|max:255',
             'thumbnail' => 'required',
             'image_cover' => 'required',
             'description' => 'required',
         ];
+
+
 
         if (!$user->isTeacher()) {
             $rules['teacher_id'] = 'required';

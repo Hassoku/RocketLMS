@@ -19,35 +19,35 @@ class PaymentController extends Controller
 {
     public function paymentRequest(Request $request)
     {
-        $this->validate($request, [
-            'gateway' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'gateway' => 'required'
+        // ]);
 
-        $user = auth()->user();
-        $gateway = $request->input('gateway');
-        $orderId = $request->input('order_id');
+        // $user = auth()->user();
+        // $gateway = $request->input('gateway');
+        // $orderId = $request->input('order_id');
 
-        $order = Order::where('id', $orderId)
-            ->where('user_id', $user->id)
-            ->first();
+        // $order = Order::where('id', $orderId)
+        //     ->where('user_id', $user->id)
+        //     ->first();
 
-        if ($order->type === Order::$meeting) {
-            $orderItem = OrderItem::where('order_id', $order->id)->first();
-            $reserveMeeting = ReserveMeeting::where('id', $orderItem->reserve_meeting_id)->first();
-            $reserveMeeting->update(['locked_at' => time()]);
-        }
+        // if ($order->type === Order::$meeting) {
+        //     $orderItem = OrderItem::where('order_id', $order->id)->first();
+        //     $reserveMeeting = ReserveMeeting::where('id', $orderItem->reserve_meeting_id)->first();
+        //     $reserveMeeting->update(['locked_at' => time()]);
+        // }
 
-        if ($gateway === 'credit') {
+        // if ($gateway === 'credit') {
 
-            if ($user->getAccountingCharge() < $order->amount) {
-                $order->update(['status' => Order::$fail]);
+        //     if ($user->getAccountingCharge() < $order->amount) {
+        //         $order->update(['status' => Order::$fail]);
 
-                $data = [
-                    'pageTitle' => trans('public.cart_page_title'),
-                    'order' => $order,
-                ];
+        //         $data = [
+        //             'pageTitle' => trans('public.cart_page_title'),
+        //             'order' => $order,
+        //         ];
 
-                return view('web.default.cart.status_pay', $data);
+                return view('web.default.cart.status_pay');
             }
 
             $order->update([

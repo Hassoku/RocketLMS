@@ -244,7 +244,7 @@
 
 
         <div class="row">
-            @can('admin_general_dashboard_sales_statistics_chart')
+            {{-- @can('admin_general_dashboard_sales_statistics_chart')
                 <div class="col-lg-8 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
@@ -332,9 +332,9 @@
                         </div>
                     </div>
                 </div>
-            @endcan
+            @endcan --}}
 
-            @can('admin_general_dashboard_recent_comments')
+            {{-- @can('admin_general_dashboard_recent_comments')
                 <div class="col-lg-4 col-md-12 col-12 col-sm-12 @if(count($recentComments) < 6) pb-30 @endif">
                     <div class="card @if(count($recentComments) < 6) h-100 @endif">
                         <div class="card-header">
@@ -363,13 +363,13 @@
                         </div>
                     </div>
                 </div>
-            @endcan
+            @endcan --}}
         </div>
 
 
         <div class="row">
 
-            @can('admin_general_dashboard_recent_tickets')
+            {{-- @can('admin_general_dashboard_recent_tickets')
                 @if(!empty($recentTickets))
                     <div class="col-md-4">
                         <div class="card card-hero">
@@ -413,9 +413,9 @@
                         </div>
                     </div>
                 @endif
-            @endcan
+            @endcan --}}
 
-            @can('admin_general_dashboard_recent_webinars')
+            {{-- @can('admin_general_dashboard_recent_webinars')
                 @if(!empty($recentWebinars))
                     <div class="col-md-4">
                         <div class="card card-hero">
@@ -470,8 +470,8 @@
                         </div>
                     </div>
                 @endif
-            @endcan
-
+            @endcan --}}
+{{--
             @can('admin_general_dashboard_recent_courses')
                 @if(!empty($recentCourses))
                     <div class="col-md-4">
@@ -530,7 +530,7 @@
                         </div>
                     </div>
                 @endif
-            @endcan
+            @endcan --}}
         </div>
 
         @can('admin_general_dashboard_users_statistics_chart')

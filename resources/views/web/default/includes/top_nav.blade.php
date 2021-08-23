@@ -25,14 +25,14 @@
                     </span>
                 @endif
 
-                @if(!empty($generalSettings['site_email']))
+
                     <div class="border-left mx-5 mx-lg-15 h-100"></div>
 
                     <span class="d-flex align-items-center py-10 py-lg-0 text-dark-blue font-14">
                         <i data-feather="mail" width="20" height="20" class="mr-10"></i>
-                        {{ $generalSettings['site_email'] }}
+                           mail@mojavi-lms.com
                     </span>
-                @endif
+
             </div>
 
             <div class="d-flex align-items-center justify-content-between justify-content-md-center">

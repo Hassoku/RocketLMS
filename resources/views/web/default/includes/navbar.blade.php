@@ -10,9 +10,9 @@
         <div class="d-flex align-items-center justify-content-between w-100">
 
             <a class="navbar-brand navbar-order mr-0" href="/">
-                @if(!empty($generalSettings['logo']))
-                    <img src="{{ $generalSettings['logo'] }}" class="img-cover" alt="site logo">
-                @endif
+
+                    <img src="{{ asset('store/1/default_images/mojavi.png') }}" class="img-cover" alt="site logo" style="width: 53px;">
+
             </a>
 
             <button class="navbar-toggler navbar-order" type="button" id="navbarToggle">

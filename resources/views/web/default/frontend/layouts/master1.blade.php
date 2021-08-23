@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en">
-@include('layouts.frontend.partials.head')
+    @include('frontend.layouts.partials1.head')
   <body>
     <!-- HEADER -->
-    @include('layouts.frontend.partials.header')
+
     <!-- HEADER -->
     <!-- Main Content -->
     <main class="main-content">
 
-    @yield('content')
+
     </main>
       <!-- Main Content -->
       <!-- footer -->
-     @include('layouts.frontend.partials.footer')
+
 
       <!-- footer -->
 
