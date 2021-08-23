@@ -12,7 +12,9 @@ class MeetingController extends Controller
 {
     public function setting(Request $request)
     {
+    
         $user = auth()->user();
+      
 
         $meeting = Meeting::where('creator_id', $user->id)
             ->with([
@@ -53,6 +55,7 @@ class MeetingController extends Controller
 
     public function update(Request $request, $id)
     {
+      
         $user = auth()->user();
         $data = $request->all();
 
@@ -90,6 +93,7 @@ class MeetingController extends Controller
 
     public function saveTime(Request $request)
     {
+       
         $user = auth()->user();
         $meeting = Meeting::where('creator_id', $user->id)->first();
         $data = $request->all();

@@ -93,6 +93,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+       
+
         $username = $this->username();
 
         if ($username == 'mobile') {
@@ -127,18 +129,21 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+       
         $this->validator($request->all())->validate();
+      
 
         $user = $this->create($request->all());
-
+      
         event(new Registered($user));
-
+     
         $username = $this->username();
-
+     
         $value = $request->get($username);
         if ($username == 'mobile') {
             $value = $request->get('country_code') . ltrim($request->get($username), '0');
         }
+       
 
         $verificationController = new VerificationController();
         $checkConfirmed = $verificationController->checkConfirmed($user, $username, $value);

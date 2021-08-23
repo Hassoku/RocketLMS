@@ -77,7 +77,7 @@
             </div>
         </div>
     </section>
-
+{{-- 
 
     <section class="card">
         <div class="card-body">
@@ -98,7 +98,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
 
 @push('scripts_bottom')

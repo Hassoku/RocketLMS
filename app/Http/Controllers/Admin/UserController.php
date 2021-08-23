@@ -872,6 +872,7 @@ class UserController extends Controller
 
     public function becomeInstructors()
     {
+       
         $this->authorize('admin_become_instructors_list');
 
         $becomeInstructors = BecomeInstructor::with(['user' => function ($query) {
