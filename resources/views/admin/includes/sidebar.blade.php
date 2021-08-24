@@ -604,7 +604,7 @@
             @endif
 
             @can('admin_documents')
-                <li class="nav-item dropdown {{ (request()->is('admin/financial/documents*')) ? 'active' : '' }}">
+                {{-- <li class="nav-item dropdown {{ (request()->is('admin/financial/documents*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-file-invoice-dollar"></i>
                         <span>Balances</span>
@@ -623,20 +623,20 @@
                             </li>
                         @endcan
                     </ul>
-                </li>
+                </li> --}}
             @endcan
 
             @can('admin_sales_list')
-                <li class="{{ (request()->is('admin/financial/sales*')) ? 'active' : '' }}">
+                {{-- <li class="{{ (request()->is('admin/financial/sales*')) ? 'active' : '' }}">
                     <a href="/admin/financial/sales" class="nav-link">
                         <i class="fas fa-list-ul"></i>
                         <span>{{ trans('admin/main.sales_list') }}</span>
                     </a>
-                </li>
+                </li> --}}
             @endcan
 
             @can('admin_payouts')
-                <li class="nav-item dropdown {{ (request()->is('admin/financial/payouts*')) ? 'active' : '' }}">
+                {{-- <li class="nav-item dropdown {{ (request()->is('admin/financial/payouts*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-credit-card"></i> <span>{{ trans('admin/main.payout') }}</span></a>
                     <ul class="dropdown-menu">
                         @can('admin_payouts_list')
@@ -655,7 +655,7 @@
                             </li>
                         @endcan
                     </ul>
-                </li>
+                </li> --}}
             @endcan
 
             {{-- @can('admin_offline_payments_list')

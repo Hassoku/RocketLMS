@@ -39,6 +39,8 @@ class SubscribesController extends Controller
 
     public function store(Request $request)
     {
+
+
         $this->authorize('admin_subscribe_create');
 
         $this->validate($request, [
