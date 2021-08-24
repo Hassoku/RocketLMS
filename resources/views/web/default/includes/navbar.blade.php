@@ -21,7 +21,7 @@
 
             <div class="mx-lg-30 d-none d-lg-flex flex-grow-1 navbar-toggle-content " id="navbarContent">
                 <div class="navbar-toggle-header text-right d-lg-none">
-                    <button class="btn-transparent" id="navbarClose">
+                    <button class="btn-transparent" id="navbarClose" >
                         <i data-feather="x" width="32" height="32"></i>
                     </button>
                 </div>

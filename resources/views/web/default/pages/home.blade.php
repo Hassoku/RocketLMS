@@ -81,7 +81,7 @@
 </section>
   <!-- Steps -->
   <!-- Team member -->
-  @if(!empty($bestRateWebinars) and !$bestRateWebinars->isEmpty())
+@if(!empty($bestRateWebinars) and !$bestRateWebinars->isEmpty())
   <section class="home-sections container">
       <div class="d-flex justify-content-between">
           <div>
@@ -141,7 +141,7 @@
                     <div class="swiper-pagination latest-webinars-swiper-pagination"></div>
                 </div>
             </div>
-        </section>
+       </section>
     @endif
 
       </div>
@@ -150,7 +150,7 @@
 </section>
   <!-- Courses -->
   <!-- Join -->
-  <section class="join">
+<section class="join">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 m-auto">
@@ -161,7 +161,7 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
   <!-- Join -->
   <!-- Category -->
   <section class="category">
@@ -173,7 +173,6 @@
             <p class="section-hint">{{ trans('home.trending_categories_hint') }}</p>
 
             <div class="row mt-40">
-
                 @foreach($trendCategories as $trend)
                     <div class="col-6 col-md-3 col-lg-2 mt-20 mt-md-0">
                         <a href="{{ $trend->category->getUrl() }}">
@@ -199,7 +198,7 @@
   </section>
   <!-- Category -->
   <!-- Instruction -->
-  <section class="instruction">
+<section class="instruction">
     <div class="container">
       <div class="row">
         <div class="col-lg-4"></div>
@@ -218,10 +217,10 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
   <!-- Instruction -->
   <!-- testimonials -->
-  <section class="client">
+<section class="client">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -257,7 +256,7 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
   <!-- testimonials -->
 
   <!-- video-section -->

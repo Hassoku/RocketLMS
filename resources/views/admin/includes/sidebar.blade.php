@@ -264,7 +264,7 @@
                 </li>
             @endcan()
 
-            @can('admin_group')
+            {{-- @can('admin_group')
                 <li class="nav-item dropdown {{ (request()->is('admin/users/groups*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-sitemap"></i>
@@ -283,7 +283,7 @@
                         @endcan
                     </ul>
                 </li>
-            @endcan
+            @endcan --}}
 
             {{-- @can('admin_users_badges')
                 <li class="{{ (request()->is('admin/users/badges')) ? 'active' : '' }}">
@@ -297,7 +297,7 @@
                 </li>
             @endcan()
 
-            @if($authUser->can('admin_supports') or
+            {{-- @if($authUser->can('admin_supports') or
                 $authUser->can('admin_comments') or
                 $authUser->can('admin_reports') or
                 $authUser->can('admin_contacts') or
@@ -362,9 +362,9 @@
                         @endcan
                     </ul>
                 </li>
-            @endcan
+            @endcan --}}
 
-            @can('admin_reports')
+            {{-- @can('admin_reports')
                 <li class="nav-item dropdown {{ (request()->is('admin/reports*') or request()->is('admin/comments/webinars/reports') or request()->is('admin/comments/blog/reports')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-info-circle"></i> <span>{{ trans('admin/main.reports') }}</span></a>
 
@@ -457,7 +457,7 @@
                         @endcan
                     </ul>
                 </li>
-            @endcan
+            @endcan --}}
 
             @if($authUser->can('admin_blog') or
                 $authUser->can('admin_pages') or
@@ -468,7 +468,7 @@
                 <li class="menu-header">{{ trans('admin/main.content') }}</li>
             @endif
 
-            @can('admin_blog')
+            {{-- @can('admin_blog')
                 <li class="nav-item dropdown {{ (request()->is('admin/blog*') and !request()->is('admin/blog/comments')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-rss-square"></i>
@@ -517,9 +517,9 @@
                         @endcan()
                     </ul>
                 </li>
-            @endcan
+            @endcan --}}
 
-            @can('admin_additional_pages')
+            {{-- @can('admin_additional_pages')
                 <li class="nav-item dropdown {{ (request()->is('admin/additional_page*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-plus-circle"></i> <span>{{ trans('admin/main.additional_pages_title') }}</span></a>
                     <ul class="dropdown-menu">
@@ -549,7 +549,7 @@
                         @endcan()
                     </ul>
                 </li>
-            @endcan
+            @endcan --}}
 
             @can('admin_testimonials')
                 <li class="nav-item dropdown {{ (request()->is('admin/testimonials*')) ? 'active' : '' }}">
@@ -573,7 +573,7 @@
                 </li>
             @endcan
 
-            @can('admin_tags')
+            {{-- @can('admin_tags')
                 <li class="nav-item dropdown {{ (request()->is('admin/tags*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-tags"></i>
@@ -592,7 +592,7 @@
                         @endcan()
                     </ul>
                 </li>
-            @endcan()
+            @endcan() --}}
 
             @if($authUser->can('admin_documents') or
                 $authUser->can('admin_sales_list') or
@@ -658,7 +658,7 @@
                 </li>
             @endcan
 
-            @can('admin_offline_payments_list')
+            {{-- @can('admin_offline_payments_list')
                 <li class="nav-item dropdown {{ (request()->is('admin/financial/offline_payments*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-university"></i> <span>{{ trans('admin/main.offline_payments') }}</span></a>
                     <ul class="dropdown-menu">
@@ -675,7 +675,7 @@
                         </li>
                     </ul>
                 </li>
-            @endcan
+            @endcan --}}
 
             @can('admin_subscribe')
                 <li class="nav-item dropdown {{ (request()->is('admin/financial/subscribes*')) ? 'active' : '' }}">

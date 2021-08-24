@@ -20,18 +20,13 @@
 
 
 
-                            <div class="empty-state mx-auto d-block"  data-width="900" >
-                                <img class="img-fluid col-md-6" src="/assets/default/img/plugin.svg" alt="image">
-                                <h3 class="mt-3">This is a paid plugin!</h3>
-                                <h5 class="lead">
-                                You can get this plugin by <strong><a href="mailto:rocketsoftsolutions@gmail.com">contacting support</a></strong> our checking <strong><a href="https://crm.rocket-soft.org">CRM</a></strong>  </h5>                              </p>
-                              </div>
 
 
-                            
+
+
                         </div>
 
-                      
+
 
                     </div>
                 </div>

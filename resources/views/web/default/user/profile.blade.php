@@ -205,7 +205,7 @@
 
 @push('scripts_bottom')
     <script>
-        ;(function (){ 
+        ;(function (){
         'use strict'
         var unFollowLang = '{{ trans('panel.unfollow') }}';
         var followLang = '{{ trans('panel.follow') }}';
@@ -214,9 +214,9 @@
         var messageSuccessSentLang = '{{ trans('site.message_success_sent') }}';
         }())
     </script>
-
-    <script src="/assets/default/vendors/persian-datepicker/persian-date.js"></script>
-    <script src="/assets/default/vendors/persian-datepicker/persian-datepicker.js"></script>
+{{--
+    <script src="/assets/default/vendors/persian-datepicker/persian-date.js"></script> --}}
+    {{-- <script src="/assets/default/vendors/persian-datepicker/persian-datepicker.js"></script> --}}
 
     <script src="/assets/default/js/parts/profile.min.js"></script>
 @endpush
