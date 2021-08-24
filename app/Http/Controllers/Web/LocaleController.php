@@ -15,9 +15,11 @@ class LocaleController extends Controller
         ]);
 
         $locale = $request->get('locale');
+
         $locale = localeToCountryCode(mb_strtoupper($locale), true);
 
         $generalSettings = getGeneralSettings();
+
         $userLanguages = $generalSettings['user_languages'];
 
         if (in_array($locale, $userLanguages)) {

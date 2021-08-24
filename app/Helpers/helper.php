@@ -1,8 +1,4 @@
 <?php
- function test(){
-
-    return "test";
-}
 
 function getTemplate()
 {

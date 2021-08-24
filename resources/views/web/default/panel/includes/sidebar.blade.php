@@ -122,17 +122,17 @@
             <div class="collapse {{ (request()->is('panel/webinars') or request()->is('panel/webinars/*')) ? 'show' : '' }}" id="webinarCollapse">
                 <ul class="sidenav-item-collapse">
                     @if($authUser->isOrganization() || $authUser->isTeacher())
-                        <li class="mt-5 {{ (request()->is('panel/webinars/new')) ? 'active' : '' }}">
+                        {{-- <li class="mt-5 {{ (request()->is('panel/webinars/new')) ? 'active' : '' }}">
                             <a href="/panel/webinars/new">{{ trans('public.new') }}</a>
-                        </li>
+                        </li> --}}
 
                         <li class="mt-5 {{ (request()->is('panel/webinars')) ? 'active' : '' }}">
                             <a href="/panel/webinars">{{ trans('panel.my_classes') }}</a>
                         </li>
 
-                        <li class="mt-5 {{ (request()->is('panel/webinars/invitations')) ? 'active' : '' }}">
+                        {{-- <li class="mt-5 {{ (request()->is('panel/webinars/invitations')) ? 'active' : '' }}">
                             <a href="/panel/webinars/invitations">{{ trans('panel.invited_classes') }}</a>
-                        </li>
+                        </li> --}}
                     @endif
 
                     @if(!empty($authUser->organ_id))
@@ -146,17 +146,17 @@
                     </li>
 
                     @if($authUser->isOrganization() || $authUser->isTeacher())
-                        <li class="mt-5 {{ (request()->is('panel/webinars/comments')) ? 'active' : '' }}">
+                        {{-- <li class="mt-5 {{ (request()->is('panel/webinars/comments')) ? 'active' : '' }}">
                             <a href="/panel/webinars/comments">{{ trans('panel.my_class_comments') }}</a>
-                        </li>
+                        </li> --}}
                     @endif
-
+{{--
                     <li class="mt-5 {{ (request()->is('panel/webinars/my-comments')) ? 'active' : '' }}">
                         <a href="/panel/webinars/my-comments">{{ trans('panel.my_comments') }}</a>
-                    </li>
-                    <li class="mt-5 {{ (request()->is('panel/webinars/favorites')) ? 'active' : '' }}">
+                    </li> --}}
+                    {{-- <li class="mt-5 {{ (request()->is('panel/webinars/favorites')) ? 'active' : '' }}">
                         <a href="/panel/webinars/favorites">{{ trans('panel.favorites') }}</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </li>
@@ -200,9 +200,9 @@
             <div class="collapse {{ (request()->is('panel/quizzes') or request()->is('panel/quizzes/*')) ? 'show' : '' }}" id="quizzesCollapse">
                 <ul class="sidenav-item-collapse">
                     @if($authUser->isOrganization() || $authUser->isTeacher())
-                        <li class="mt-5 {{ (request()->is('panel/quizzes/new')) ? 'active' : '' }}">
+                        {{-- <li class="mt-5 {{ (request()->is('panel/quizzes/new')) ? 'active' : '' }}">
                             <a href="/panel/quizzes/new">{{ trans('quiz.new_quiz') }}</a>
-                        </li>
+                        </li> --}}
                         <li class="mt-5 {{ (request()->is('panel/quizzes')) ? 'active' : '' }}">
                             <a href="/panel/quizzes">{{ trans('public.list') }}</a>
                         </li>
@@ -215,9 +215,9 @@
                         <a href="/panel/quizzes/my-results">{{ trans('public.my_results') }}</a>
                     </li>
 
-                    <li class="mt-5 {{ (request()->is('panel/quizzes/opens')) ? 'active' : '' }}">
+                    {{-- <li class="mt-5 {{ (request()->is('panel/quizzes/opens')) ? 'active' : '' }}">
                         <a href="/panel/quizzes/opens">{{ trans('public.not_participated') }}</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </li>
