@@ -18,20 +18,41 @@
                     <div class="card">
                         <div class="card-body">
 
+                            <div class="table-responsive">
+                                <table class="table table-striped text-center font-14">
+
+                                    <tr>
+                                        <th>{{ trans('public.title') }}</th>
+                                        <th>Image</th>
+
+                                        <th></th>
+                                    </tr>
+
+                                    @foreach($templates as $ticket)
+                                        <tr>
+                                            <th scope="row">{{ $ticket->title }}</th>
+                                            <td><img width="40px" src="{{ $ticket->image }}"></td>
+
+                                            <td>
+                                                <button type="button" data-ticket-id="{{ $ticket->id }}" data-webinar-id="{{ !empty($webinar) ? $webinar->id : '' }}" class="edit-ticket btn-transparent text-primary mt-1" data-toggle="tooltip" data-placement="top" title="{{ trans('admin/main.edit') }}">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+
+                                                @include('admin.includes.delete_button',['url' => '/admin/tickets/'. $ticket->id .'/delete', 'btnClass' => ' mt-1'])
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                </table>
+                            </div>
 
 
-                            <div class="empty-state mx-auto d-block"  data-width="900" >
-                                <img class="img-fluid col-md-6" src="/assets/default/img/plugin.svg" alt="image">
-                                <h3 class="mt-3">This is a paid plugin!</h3>
-                                <h5 class="lead">
-                                You can get this plugin by <strong><a href="mailto:rocketsoftsolutions@gmail.com">contacting support</a></strong> our checking <strong><a href="https://crm.rocket-soft.org">CRM</a></strong>  </h5>                              </p>
-                              </div>
 
 
-                            
+
                         </div>
 
-                      
+
 
                     </div>
                 </div>

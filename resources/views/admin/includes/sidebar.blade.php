@@ -37,7 +37,7 @@
             @if($authUser->can('admin_webinars') or
                 $authUser->can('admin_categories') or
                 $authUser->can('admin_filters') or
-                // $authUser->can('admin_quizzes') or
+                $authUser->can('admin_quizzes') or
                 $authUser->can('admin_certificate') or
                 $authUser->can('admin_reviews_lists')
             )
@@ -122,16 +122,16 @@
                 </li>
             @endcan() --}}
 
-            {{-- @can('admin_quizzes')
+            @can('admin_quizzes')
                 <li class="{{ (request()->is('admin/quizzes*')) ? 'active' : '' }}">
                     <a class="nav-link " href="/admin/quizzes">
                         <i class="fa fa-file"></i>
                         <span>{{ trans('admin/main.quizzes') }}</span>
                     </a>
                 </li>
-            @endcan() --}}
+            @endcan()
 
-            {{-- @can('admin_certificate')
+           @can('admin_certificate')
                 <li class="nav-item dropdown {{ (request()->is('admin/certificates*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-newspaper"></i>
@@ -159,7 +159,7 @@
                         @endcan
                     </ul>
                 </li>
-            @endcan --}}
+            @endcan
 
             {{-- @can('admin_reviews_lists')
                 <li class="{{ (request()->is('admin/reviews')) ? 'active' : '' }}">

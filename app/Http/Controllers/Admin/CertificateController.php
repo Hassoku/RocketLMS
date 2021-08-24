@@ -110,6 +110,7 @@ class CertificateController extends Controller
 
     public function CertificatesTemplateStore(Request $request, $template_id = null)
     {
+
         $this->authorize('admin_certificate_template_create');
 
         $rules = [
@@ -121,6 +122,7 @@ class CertificateController extends Controller
             'font_size' => 'required',
             'text_color' => 'required',
         ];
+
         $this->validate($request, $rules);
 
         $status = $request->get('status', 'draft');
