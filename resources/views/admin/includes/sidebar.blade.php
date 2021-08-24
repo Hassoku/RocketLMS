@@ -394,7 +394,7 @@
                         @endcan()
                     </ul>
                 </li>
-            @endcan
+            @endcan --}}
 
             @can('admin_contacts')
                 <li class="{{ (request()->is('admin/contacts*')) ? 'active' : '' }}">
@@ -405,7 +405,7 @@
                 </li>
             @endcan
 
-            @can('admin_noticeboards')
+           {{--   @can('admin_noticeboards')
                 <li class="nav-item dropdown {{ (request()->is('admin/noticeboards*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-sticky-note"></i> <span>{{ trans('admin/main.noticeboard') }}</span></a>
                     <ul class="dropdown-menu">

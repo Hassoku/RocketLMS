@@ -28,6 +28,7 @@ class ContactController extends Controller
 
     public function reply($id)
     {
+
         $this->authorize('admin_contacts_reply');
 
         $contact = Contact::findOrFail($id);
@@ -42,11 +43,13 @@ class ContactController extends Controller
 
     public function storeReply(Request $request, $id)
     {
+
         $this->authorize('admin_contacts_reply');
 
         $this->validate($request, [
             'reply' => 'required'
         ]);
+      
 
         $reply = $request->get('reply');
 
