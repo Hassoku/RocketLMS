@@ -104,11 +104,11 @@
         <section>
             <div id="instructorsList" class="row mt-20">
 
-                {{-- @foreach($instructors as $instructor)
+                @foreach($instructors as $instructor)
                     <div class="col-12 col-md-6 col-lg-4">
                         @include('web.default.pages.instructor_card',['instructor' => $instructor])
                     </div>
-                @endforeach --}}
+                @endforeach
 
             </div>
 
@@ -132,12 +132,11 @@
                 <div class="position-relative mt-20">
                     <div id="bestRateInstructorsSwiper" class="swiper-container px-12">
                         <div class="swiper-wrapper pb-20">
-
-                            {{-- @foreach($bestRateInstructors as $bestRateInstructor)
+                             @foreach($bestRateInstructors as $bestRateInstructor)
                                 <div class="swiper-slide">
                                     @include('web.default.pages.instructor_card',['instructor' => $bestRateInstructor])
                                 </div>
-                            @endforeach --}}
+                            @endforeach
 
                         </div>
                     </div>
@@ -165,11 +164,11 @@
                     <div id="topSaleInstructorsSwiper" class="swiper-container px-12">
                         <div class="swiper-wrapper pb-20">
 
-                            {{-- @foreach($bestSalesInstructors as $bestSalesInstructor)
+                             @foreach($bestSalesInstructors as $bestSalesInstructor)
                                 <div class="swiper-slide">
                                     @include('web.default.pages.instructor_card',['instructor' => $bestSalesInstructor])
                                 </div>
-                            @endforeach --}}
+                            @endforeach
 
                         </div>
                     </div>
