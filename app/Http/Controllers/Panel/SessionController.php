@@ -14,6 +14,7 @@ class SessionController extends Controller
 {
     public function store(Request $request)
     {
+       
         $user = auth()->user();
         $data = $request->get('ajax')['new'];
 

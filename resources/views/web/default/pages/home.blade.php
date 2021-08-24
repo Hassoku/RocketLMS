@@ -14,8 +14,8 @@
             <h2 class="hd"><i class="fas fa-caret-right mr-2"></i>Learn from the world’s best</h2>
             <h2 class="sec-heading">Choose <strong>2500+</strong> Online Video Courses With <strong>New Additions..</strong></h2>
             <p>Enroll Today Get 70% off  For All Courses</p>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search Courses" aria-label="Search">
+            <form class="d-flex"  action="/search" method="get">
+              <input class="form-control me-2" type="text" name="search" placeholder="Search Courses" aria-label="Search">
               <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             </form>
           </div>
@@ -81,69 +81,34 @@
 </section>
   <!-- Steps -->
   <!-- Team member -->
-<section class="team">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="sec-heading">New classes added  <strong>every month.</strong></h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <div id="team">
-            <div class="item">
-              <div class="box">
-                <div class="img-box"><img src="{{ asset('frontend/assets/images/a (13).png') }}" class="img-fluid" alt=""></div>
-                <div class="overlay">
-                  <h5>Jacob saim</h5>
-                  <h4>Marketing</h4>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="box">
-                <div class="img-box"><img src="{{ asset('fontend/assets/images/a (22).png') }}" class="img-fluid" alt=""></div>
-                <div class="overlay">
-                  <h5>Jacob saim</h5>
-                  <h4>Marketing</h4>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="box">
-                <div class="img-box"><img src="{{ asset('frontend/assets/images/a (23).png') }}" class="img-fluid" alt=""></div>
-                <div class="overlay">
-                  <h5>Jacob saim</h5>
-                  <h4>Marketing</h4>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="box">
-                <div class="img-box"><img src="{{ asset('frontend/assets/images/a (19).png') }}" class="img-fluid" alt=""></div>
-                <div class="overlay">
-                  <h5>Jacob saim</h5>
-                  <h4>Marketing</h4>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="box">
-                <div class="img-box"><img src="{{ asset('frontend/assets/images/a (23).png') }}" class="img-fluid" alt=""></div>
-                <div class="overlay">
-                  <h5>Jacob saim</h5>
-                  <h4>Marketing</h4>
-                </div>
-              </div>
-            </div>
+  @if(!empty($bestRateWebinars) and !$bestRateWebinars->isEmpty())
+  <section class="home-sections container">
+      <div class="d-flex justify-content-between">
+          <div>
+              <h2 class="section-title">{{ trans('home.best_rates') }}</h2>
+              <p class="section-hint">{{ trans('home.best_rates_hint') }}</p>
           </div>
-        </div>
-        <div class="text-center">
-          <a href="/classes?sort=newest" class="btn btn-main">Find Classes For You</a>
-        </div>
+
+          <a href="/classes?sort=best_rates" class="btn btn-border-white">{{ trans('home.view_all') }}</a>
       </div>
-    </div>
-</section>
+
+      <div class="mt-10 position-relative">
+          <div class="swiper-container best-rates-webinars-swiper px-12">
+              <div class="swiper-wrapper py-20">
+                  @foreach($bestRateWebinars as $bestRateWebinar)
+                      <div class="swiper-slide">
+                          @include('web.default.includes.webinar.grid-card',['webinar' => $bestRateWebinar])
+                      </div>
+                  @endforeach
+              </div>
+          </div>
+
+          <div class="d-flex justify-content-center">
+              <div class="swiper-pagination best-rates-webinars-swiper-pagination"></div>
+          </div>
+      </div>
+  </section>
+@endif
   <!-- Team member -->
   <!-- Courses -->
 <section class="courses">

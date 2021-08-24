@@ -14,7 +14,7 @@
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-12 col-md-9 col-lg-7">
                         <div class="top-search-form">
-                            <h1 class="text-white font-30">{{ nl2br(trans('site.result_find',['count' => $resultCount , 'search' => request()->get('search')])) }}</h1>
+                            <h1 class="text-white font-30">{{ (trans('site.result_find',['count' => $resultCount , 'search' => request()->get('search')])) }}</h1>
 
                             <div class="search-input bg-white p-10 flex-grow-1">
                                 <form action="/search" method="get">

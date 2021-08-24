@@ -25,7 +25,7 @@
                                 <i data-feather="calendar" width="18" height="18" class="text-white"></i>
                             </span>
                             </div>
-                            <input type="text" name="ajax[new][date]" value="" class="js-ajax-date form-control datetimepicker"/>
+                            <input type="date" name="ajax[new][date]" value="" class="js-ajax-date form-control datetimepicker"/>
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
             <div class="col-6">
                 <div class="form-group">
                     <label class="input-label">{{ trans('public.duration') }}</label>
-                    <input type="text" name="ajax[new][duration]" value="" class="js-ajax-duration form-control"/>
+                    <input type="" name="ajax[new][duration]" value="" class="js-ajax-duration form-control"/>
                     <div class="invalid-feedback"></div>
                 </div>
             </div>
