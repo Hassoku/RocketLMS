@@ -18,20 +18,43 @@
                     <div class="card">
                         <div class="card-body">
 
+                            <div class="table-responsive">
+                                <table class="table table-striped text-center font-14">
+
+                                    <tr>
+                                        <th>Student Name</th>
+                                        <th>Quiz Title</th>
+                                        <th>Webinar Title</th>
+                                        <th>Quiz Result</th>
+
+                                        <th></th>
+                                    </tr>
+
+                                    @foreach($certificates as $ticket)
+                                        <tr>
+                                            <th scope="row">{{ $ticket->quiz->title }}</th>
+                                            <th scope="row">{{ $ticket->quiz->webinar_title }}</th>
+                                            <td>{{ $ticket->student->full_name }}</td>
+                                            <td>{{ $ticket->quizzesResult->status }}</td>
+
+                                            <td>
 
 
-                            <div class="empty-state mx-auto d-block"  data-width="900" >
-                                <img class="img-fluid col-md-6" src="/assets/default/img/plugin.svg" alt="image">
-                                <h3 class="mt-3">This is a paid plugin!</h3>
-                                <h5 class="lead">
-                                You can get this plugin by <strong><a href="mailto:rocketsoftsolutions@gmail.com">contacting support</a></strong> our checking <strong><a href="https://crm.rocket-soft.org">CRM</a></strong>  </h5>                              </p>
-                              </div>
+                                                @include('admin.includes.delete_button',['url' => '/admin/tickets/'. $ticket->id .'/delete', 'btnClass' => ' mt-1'])
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                </table>
+                            </div>
 
 
-                            
+
+
+
                         </div>
 
-                      
+
 
                     </div>
                 </div>

@@ -515,6 +515,7 @@ class UserController extends Controller
 
     public function edit(Request $request, $id)
     {
+
         $this->authorize('admin_users_edit');
 
         $user = User::where('id', $id)
@@ -534,6 +535,7 @@ class UserController extends Controller
         if (empty($user)) {
             abort(404);
         }
+
 
         $becomeInstructor = null;
         if (!empty($request->get('type')) and $request->get('type') == 'check_instructor_request') {
@@ -571,6 +573,7 @@ class UserController extends Controller
         $this->authorize('admin_users_edit');
 
         $user = User::findOrFail($id);
+
 
         $this->validate($request, [
             'full_name' => 'required|min:3|max:128',
@@ -651,6 +654,7 @@ class UserController extends Controller
         $this->authorize('admin_users_edit');
 
         $user = User::findOrFail($id);
+
 
         if (!empty($request->get('avatar', null))) {
             $user->avatar = $request->get('avatar', null);
@@ -872,7 +876,7 @@ class UserController extends Controller
 
     public function becomeInstructors()
     {
-       
+
         $this->authorize('admin_become_instructors_list');
 
         $becomeInstructors = BecomeInstructor::with(['user' => function ($query) {
