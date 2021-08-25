@@ -17,15 +17,15 @@
 
                         <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between">
                             @can('admin_general_dashboard_quick_access_links')
-                                <div>
+                                {{-- <div>
                                     <p class="lead">{{trans('admin/main.welcome_card_text')}}</p>
 
                                     <div class="mt-2 mb-2 d-flex flex-column flex-md-row">
                                         <a href="/admin/comments/webinars" class="mt-2 mt-md-0 btn btn-outline-white btn-lg btn-icon icon-left ml-0 ml-md-2"><i class="far fa-comment"></i>{{trans('admin/main.comments')}} </a>
-                                        <a href="/admin/supports" class="mt-2 mt-md-0 btn btn-outline-white btn-lg btn-icon icon-left ml-0 ml-md-2"><i class="far fa-envelope"></i>{{trans('admin/main.tickets')}}</a>
+                                       <a href="/admin/supports" class="mt-2 mt-md-0 btn btn-outline-white btn-lg btn-icon icon-left ml-0 ml-md-2"><i class="far fa-envelope"></i>{{trans('admin/main.tickets')}}</a>
                                         <a href="/admin/reports/webinars" class="mt-2 mt-md-0 btn btn-outline-white btn-lg btn-icon icon-left ml-0 ml-md-2"><i class="fas fa-info"></i>{{trans('admin/main.reports')}}</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             @endcan
 
                             @can('admin_clear_cache')
