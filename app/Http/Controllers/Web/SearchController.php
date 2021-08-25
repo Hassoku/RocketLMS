@@ -12,6 +12,7 @@ class SearchController extends Controller
 {
     public function index(Request $request)
     {
+
         $data = [];
 
         $search = $request->get('search', null);
@@ -37,6 +38,7 @@ class SearchController extends Controller
                 ])
                 ->get();
 
+
             $teachers = $users->where('role_name', Role::$teacher);
             $organizations = $users->where('role_name', Role::$organization);
 
@@ -55,6 +57,7 @@ class SearchController extends Controller
                 'organizations' => $organizations
             ];
         }
+
 
         return view(getTemplate() . '.pages.search', $data);
     }
