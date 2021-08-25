@@ -10,7 +10,7 @@
     <section class="site-top-banner search-top-banner opacity-04 position-relative">
         <img src="{{ getPageBackgroundSettings('categories') }}" class="img-cover" alt=""/>
 
-        <div class="container h-100">
+        <div class="container h-100">s
             <div class="row h-100 align-items-center justify-content-center text-center">
                 <div class="col-12 col-md-9 col-lg-7">
                     <div class="top-search-categories-form">
@@ -18,7 +18,7 @@
                         <span class="course-count-badge py-5 px-10 text-white rounded">{{ $category->webinars_count }} {{ trans('product.courses') }}</span>
 
                         <div class="search-input bg-white p-10 flex-grow-1">
-                            <form action="/search" method="post">
+                            <form action="/search" method="get">
                                 <div class="form-group d-flex align-items-center m-0">
                                     <input type="text" class="form-control border-0" placeholder="{{ trans('home.slider_search_placeholder') }}"/>
                                     <button type="submit" class="btn btn-primary rounded-pill">{{ trans('home.find') }}</button>

@@ -54,7 +54,7 @@
                             <div class="col-6 col-md-3 col-lg-2 mt-30">
                                 <div class="user-search-card text-center d-flex flex-column align-items-center justify-content-center">
                                     <div class="user-avatar">
-                                        <img src="{{ $teacher->getAvatar() }}" class="img-cover rounded-circle" alt="{{ $teacher->full_name }}">
+                                        <img src="{{ $teacher->avatar }}" class="img-cover rounded-circle" alt="{{ $teacher->full_name }}">
                                     </div>
                                     <a href="{{ $teacher->getProfileUrl() }}">
                                         <h4 class="font-16 font-weight-bold text-dark-blue mt-10">{{ $teacher->full_name }}</h4>
