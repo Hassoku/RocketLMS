@@ -51,6 +51,8 @@ class UserController extends Controller
         $data = $request->all();
 
 
+
+
         $organization = null;
         if (!empty($data['organization_id']) and !empty($data['user_id'])) {
             $organization = auth()->user();
