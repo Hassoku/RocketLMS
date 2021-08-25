@@ -116,8 +116,11 @@ class UserController extends Controller
                 ];
 
                 if (!empty($data['profile_image'])) {
+
                     $profileImage = $this->createImage($user, $data['profile_image']);
                     $updateData['avatar'] = $profileImage;
+
+
                 }
             } elseif ($step == 3) {
                 $updateData = [
@@ -210,6 +213,7 @@ class UserController extends Controller
 
     public function createImage($user, $img)
     {
+
         $folderPath = "/" . $user->id . '/';
 
         $image_parts = explode(";base64,", $img);
@@ -217,10 +221,14 @@ class UserController extends Controller
         $image_type = $image_type_aux[1];
         $image_base64 = base64_decode($image_parts[1]);
         $file = uniqid() . '.' . $image_type;
+        $t = 'store'.$folderPath.$file;
 
-        Storage::disk('public')->put($folderPath . $file, $image_base64);
 
-        return $file;
+     Storage::disk('public')->put($folderPath . $file, $image_base64);
+
+
+
+        return  $t;
     }
 
     public function storeMetas(Request $request)
