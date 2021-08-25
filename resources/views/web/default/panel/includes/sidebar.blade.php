@@ -2,7 +2,7 @@
     {{ $authUser }}
     <div class="user-info d-flex align-items-center justify-content-between">
         <div class="user-avatar">
-                      <img src="{{ $authUser->getAvatar() }}" class="img-cover" alt="{{ $authUser->full_name }}">
+                      <img src="{{ $authUser->avatar }}" class="img-cover" alt="{{ $authUser->full_name }}">
         </div>
 
         <div class="user-name ml-15">
