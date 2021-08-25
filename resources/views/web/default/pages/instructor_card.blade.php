@@ -14,7 +14,7 @@
 
     <a href="{{ $instructor->getProfileUrl() }}{{ ($canReserve) ? '?tab=appointments' : '' }}" class="text-center d-flex flex-column align-items-center justify-content-center">
         <div class=" teacher-avatar mt-5 position-relative">
-            <img src="{{ $instructor->getAvatar() }}" class="img-cover" alt="{{ $instructor->full_name }}">
+            <img src="{{ $instructor->avatar }}" class="img-cover" alt="{{ $instructor->full_name }}">
 
             @if($instructor->offline)
                 <span class="user-circle-badge unavailable d-flex align-items-center justify-content-center">
