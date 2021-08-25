@@ -651,6 +651,7 @@ class UserController extends Controller
 
     public function updateImage(Request $request, $id)
     {
+
         $this->authorize('admin_users_edit');
 
         $user = User::findOrFail($id);

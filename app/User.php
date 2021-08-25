@@ -104,7 +104,7 @@ class User extends Authenticatable
     public function getAvatar()
     {
         if (!empty($this->avatar)) {
-            $imgUrl = '/store/' . $this->id . '/' . $this->avatar;
+            $imgUrl = $this->avatar;
         } else {
             $imgUrl = getPageBackgroundSettings('user_avatar');
         }
