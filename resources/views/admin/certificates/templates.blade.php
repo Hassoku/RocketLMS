@@ -34,9 +34,9 @@
                                             <td><img width="40px" src="{{ $ticket->image }}"></td>
 
                                             <td>
-                                                <button type="button" data-ticket-id="{{ $ticket->id }}" data-webinar-id="{{ !empty($webinar) ? $webinar->id : '' }}" class="edit-ticket btn-transparent text-primary mt-1" data-toggle="tooltip" data-placement="top" title="{{ trans('admin/main.edit') }}">
+                                                <a href="{{ url('/admin/certificates/templates/'.$ticket->id.'/edit') }}" data-ticket-id="{{ $ticket->id }}" data-webinar-id="{{ !empty($webinar) ? $webinar->id : '' }}" class="edit-ticket btn-transparent text-primary mt-1" data-toggle="tooltip" data-placement="top" title="{{ trans('admin/main.edit') }}">
                                                     <i class="fa fa-edit"></i>
-                                                </button>
+                                                </a>
 
                                                 @include('admin.includes.delete_button',['url' => '/admin/tickets/'. $ticket->id .'/delete', 'btnClass' => ' mt-1'])
                                             </td>

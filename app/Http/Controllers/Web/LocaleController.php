@@ -10,6 +10,7 @@ class LocaleController extends Controller
 {
     public function setLocale(Request $request)
     {
+
         $this->validate($request, [
             'locale' => 'required'
         ]);
@@ -25,6 +26,7 @@ class LocaleController extends Controller
         if (in_array($locale, $userLanguages)) {
             if (auth()->check()) {
                 $user = auth()->user();
+
                 $user->update([
                     'language' => $locale
                 ]);

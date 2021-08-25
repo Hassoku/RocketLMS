@@ -304,7 +304,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'web'
                 Route::post('/store', 'CertificateController@CertificatesTemplateStore');
                 Route::get('/preview', 'CertificateController@CertificatesTemplatePreview');
                 Route::get('/{template_id}/edit', 'CertificateController@CertificatesTemplatesEdit');
-                Route::post('/{template_id}/update', 'CertificateController@CertificatesTemplateStore');
+                Route::post('/{template_id}/update', 'CertificateController@CertificatesTemplateStore')->name('update.certificate');
                 Route::get('/{template_id}/delete', 'CertificateController@CertificatesTemplatesDelete');
             });
             Route::get('/{id}/download', 'CertificateController@CertificatesDownload');

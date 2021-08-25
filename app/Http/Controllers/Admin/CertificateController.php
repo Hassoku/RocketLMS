@@ -188,9 +188,12 @@ class CertificateController extends Controller
 
     public function CertificatesTemplatesEdit($template_id)
     {
+
         $this->authorize('admin_certificate_template_edit');
 
+
         $template = CertificateTemplate::findOrFail($template_id);
+
 
         $data = [
             'pageTitle' => trans('admin/main.certificate_template_edit_page_title'),

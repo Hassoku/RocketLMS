@@ -30,9 +30,14 @@
                 <div class="col-12 col-md-12">
                     <div class="col-12 ">
                         <div class="card">
-                            <div class="card-body">
 
-                                <form method="post" action="/admin/certificates/templates/store" id="webinarForm" class="webinar-form">
+@if(empty($template))
+
+ <form method="post"  action="/admin/certificates/templates/store" id="webinarForm" class="webinar-form">
+@else
+<form method="post"  action='{{ route('update.certificate',$template->id) }}' id="webinarForm" class="webinar-form">
+    @endif
+
                                     {{ csrf_field() }}
 
                                     <section>
@@ -49,13 +54,13 @@
                                                                 <i class="fa fa-upload"></i>
                                                             </button>
                                                         </div>
-                                                        <input type="text" name="image" id="thumbnail" value="{{ !empty($webinar) ? $webinar->thumbnail : old('thumbnail') }}" class="form-control @error('thumbnail')  is-invalid @enderror"/>
+                                                        <input type="text" name="image" id="thumbnail" value="{{ !empty($template) ? $template->image : old('image') }}" class="form-control @error('image')  is-invalid @enderror"/>
                                                         <div class="input-group-append">
                                                             <button type="submit" class="input-group-text admin-file-view" data-input="thumbnail">
                                                                 <i class="fa fa-eye"></i>
                                                             </button>
                                                         </div>
-                                                        @error('thumbnail')
+                                                        @error('image')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
@@ -64,7 +69,7 @@
                                                 </div>
                                                 <div class="form-group mt-15">
                                                     <label class="input-label">{{ trans('public.title') }}</label>
-                                                    <input type="text" name="title" value="" class="form-control @error('title')  is-invalid @enderror" placeholder="Title"/>
+                                                    <input type="text" name="title" value="{{ !empty($template) ? $template->title : old('title') }}" class="form-control @error('title')  is-invalid @enderror" placeholder="Title"/>
                                                     @error('title')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -73,7 +78,7 @@
                                                 </div>
                                                 <div class="form-group mt-15">
                                                     <label class="input-label">Position X</label>
-                                                    <input type="text" name="position_x" value="" class="form-control @error('position_x')  is-invalid @enderror" placeholder="Position X"/>
+                                                    <input type="text" name="position_x" value="{{ !empty($template) ? $template->position_x : old('position_x') }}" class="form-control @error('position_x')  is-invalid @enderror" placeholder="Position X"/>
                                                     @error('position_x')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -82,7 +87,7 @@
                                                 </div>
                                                 <div class="form-group mt-15">
                                                     <label class="input-label">Position Y</label>
-                                                    <input type="text" name="position_y" value="" class="form-control @error('position_y')  is-invalid @enderror" placeholder="Position Y"/>
+                                                    <input type="text" name="position_y" value="{{ !empty($template) ? $template->position_y : old('position_y') }}" class="form-control @error('position_y')  is-invalid @enderror" placeholder="Position Y"/>
                                                     @error('position_y')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -91,7 +96,7 @@
                                                 </div>
                                                 <div class="form-group mt-15">
                                                     <label class="input-label">Color</label>
-                                                    <input type="text" name="text_color" value="" class="form-control @error('color')  is-invalid @enderror" placeholder="Color"/>
+                                                    <input type="text" name="text_color" value="{{ !empty($template) ? $template->text_color : old('text_color') }}" class="form-control @error('color')  is-invalid @enderror" placeholder="Color"/>
                                                     @error('color')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -100,7 +105,7 @@
                                                 </div>
                                                 <div class="form-group mt-15">
                                                     <label class="input-label">Font Size</label>
-                                                    <input type="text" name="font_size" value="" class="form-control @error('font_size')  is-invalid @enderror" placeholder="Font Size"/>
+                                                    <input type="text" name="font_size" value="{{ !empty($template) ? $template->font_size : old('font_size') }}" class="form-control @error('font_size')  is-invalid @enderror" placeholder="Font Size"/>
                                                     @error('font_size')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -112,7 +117,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group mt-15">
                                                             <label class="input-label">{{ trans('public.description') }}</label>
-                                                            <textarea id="summernote" name="body" class="form-control @error('body')  is-invalid @enderror" placeholder="">Certificate Body</textarea>
+                                                            <textarea id="summernote" name="body" class="form-control @error('body')  is-invalid @enderror" placeholder="">{{ !empty($template) ? $template->body : old('font_size') }}</textarea>
                                                             @error('body')
                                                             <div class="invalid-feedback">
                                                                 {{ $message }}

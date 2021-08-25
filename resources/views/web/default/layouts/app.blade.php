@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/default/css/app.css') }}">
 
     @if($isRtl)
+    @php dd($idRtl) @endphp
         <link rel="stylesheet" href="{{ asset('/assets/default/css/rtl-app.css') }}">
     @endif
 
