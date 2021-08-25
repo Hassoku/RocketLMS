@@ -45,6 +45,8 @@ class ClassesController extends Controller
 
     public function handleFilters($request, $query)
     {
+
+
         $upcoming = $request->get('upcoming', null);
         $isFree = $request->get('free', null);
         $withDiscount = $request->get('discount', null);
