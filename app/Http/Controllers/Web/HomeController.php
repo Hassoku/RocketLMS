@@ -305,6 +305,7 @@ class HomeController extends Controller
             'offlineCourseCount' => $offlineCourseCount,
             'boxVideoOrImage' => $boxVideoOrImage ?? null,
         ];
+        
 
         return view(getTemplate() . '.pages.home', $data);
 

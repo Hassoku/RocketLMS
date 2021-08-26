@@ -32,7 +32,8 @@ class Channel implements IChannel
         $generalSettings = getGeneralSettings();
         $currency = currency();
 
-        Stripe::setApiKey($this->api_secret);
+        $stripe = Stripe::setApiKey(env('STRIPE_SECRET'));
+
 
         $checkout = Session::create([
             'payment_method_types' => ['card'],

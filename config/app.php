@@ -165,6 +165,7 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -182,6 +183,8 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
         KingFlamez\Rave\RaveServiceProvider::class,
+
+
     ],
 
     /*
@@ -238,6 +241,7 @@ return [
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Share' => Jorenvh\Share\ShareFacade::class,
         'Rave' => KingFlamez\Rave\Facades\Rave::class,
+        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
     ],
 
 ];

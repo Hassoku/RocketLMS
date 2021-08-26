@@ -183,7 +183,7 @@
                                     </div>
                                 </div>
 
-                                <div class="item-count px-10 px-lg-20 py-5 py-lg-10">{{ $trend->category->webinars_count }} {{ trans('product.course') }}</div>
+                                <div class="item-count px-10 px-lg-20 py-5 py-lg-10" >{{ $trend->category->webinars_count }} {{ trans('product.course') }}</div>
 
                                 <h3>{{ $trend->category->title }}</h3>
                             </div>
@@ -206,9 +206,6 @@
           <div class="content">
             <h2>Become an instructor</h2>
             <p>Top instructors from around the world teach millions of students on My Mojavi. We provide the tools and skills to teach what you love</p>
-
-
-
 
             <a href="{{ empty($authUser) ? '/login' : (($authUser->isUser()) ? '/become_instructor' : '/panel/webinars/new') }}" class="btn btn-business">
                 {{ (empty($authUser) or !$authUser->isUser()) ? trans('navbar.start_a_live_class') : ($authUser->isUser() ? trans('site.become_instructor') : '') }}

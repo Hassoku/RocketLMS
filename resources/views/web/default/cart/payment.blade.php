@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-    {{-- <section class="cart-banner position-relative text-center">
+    <section class="cart-banner position-relative text-center">
         <h1 class="font-30 text-white font-weight-bold">{{ trans('cart.checkout') }}</h1>
         <span class="payment-hint font-20 text-white d-block">{{'$' . $total . ' ' .  trans('cart.for_items',['count' => $count]) }}</span>
     </section>
@@ -73,7 +73,7 @@
                 </script>
             </form>
         @endif
-    </section> --}}
+    </section>
 
 @endsection
 
