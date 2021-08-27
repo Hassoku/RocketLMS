@@ -94,6 +94,7 @@ class RegisterController extends Controller
     {
 
 
+
         $username = $this->username();
 
         if ($username == 'mobile') {
@@ -144,25 +145,26 @@ class RegisterController extends Controller
         }
 
 
-        $verificationController = new VerificationController();
-        $checkConfirmed = $verificationController->checkConfirmed($user, $username, $value);
+        // $verificationController = new VerificationController();
+        // $checkConfirmed = $verificationController->checkConfirmed($user, $username, $value);
 
-        if ($checkConfirmed['status'] == 'send') {
-            return redirect('/verification');
-        } elseif ($checkConfirmed['status'] == 'verified') {
-            $this->guard()->login($user);
+        // if ($checkConfirmed['status'] == 'send') {
+        //     return redirect('/verification');
+        // } elseif ($checkConfirmed['status'] == 'verified') {
 
-            $user->update([
-                'status' => User::$active,
-            ]);
+        // }
+        $this->guard()->login($user);
 
-            if ($response = $this->registered($request, $user)) {
-                return $response;
-            }
+        $user->update([
+            'status' => User::$active,
+        ]);
 
-            return $request->wantsJson()
-                ? new JsonResponse([], 201)
-                : redirect($this->redirectPath());
-        }
+        // if ($response = $this->registered($request, $user)) {
+        //     return $response;
+        // }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 201)
+            : redirect($this->redirectPath());
     }
 }
