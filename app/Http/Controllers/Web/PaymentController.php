@@ -108,7 +108,12 @@ class PaymentController extends Controller
          ]);
 
 
-            return back()->with('success','Payment Successfull');
+         $toastData = [
+            'title' => "Payment Successful",
+            'msg' => "Payment Successful",
+            'status' => 'success'
+        ];
+            return redirect('cart')->with(['toast' => $toastData]);
 
         } catch (\Exception $exception) {
             $toastData = [
