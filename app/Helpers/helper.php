@@ -1228,6 +1228,7 @@ function random_str($length)
 
 function checkCourseForSale($course, $user)
 {
+
     if (!$course->canSale()) {
         $toastData = [
             'title' => trans('public.request_failed'),

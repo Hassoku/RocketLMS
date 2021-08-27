@@ -20,6 +20,7 @@ class CartController extends Controller
     public function index()
     {
         $user = auth()->user();
+
         $carts = Cart::where('creator_id', $user->id)
             ->with([
                 'user',
@@ -218,9 +219,10 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
+
         $discountId = $request->input('discount_id');
 
-        $paymentChannels = PaymentChannel::where('status', 'active')->get();
+        $paymentChannels = PaymentChannel::where('status', 'active')->limit(2)->get();
 
         $discountCoupon = Discount::where('id', $discountId)->first();
 

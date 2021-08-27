@@ -17,7 +17,7 @@
         <div class="blog-grid-footer d-flex align-items-center justify-content-between mt-15">
             <span>
                 <i data-feather="user" width="20" height="20" class=""></i>
-                <span class="ml-5">{{ $post->author->full_name }}</span>
+                {{-- <span class="ml-5">{{ $post->author->full_name }}</span> --}}
             </span>
 
             <span class="d-flex align-items-center">

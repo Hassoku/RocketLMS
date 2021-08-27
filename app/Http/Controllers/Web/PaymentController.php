@@ -2,23 +2,27 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
-use App\Models\Accounting;
+use Stripe\Charge;
+use Stripe\Stripe;
 use App\Models\Cart;
+use App\Models\Sale;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Accounting;
+use App\Models\TicketUser;
+use Illuminate\Http\Request;
 use App\Models\PaymentChannel;
 use App\Models\ReserveMeeting;
-use App\Models\Sale;
-use App\Models\TicketUser;
+use App\Http\Controllers\Controller;
 use App\PaymentChannels\ChannelManager;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\PaymentChannels\Drivers\Stripe\Channel;
 
 class PaymentController extends Controller
 {
     public function paymentRequest(Request $request)
     {
+
         $this->validate($request, [
             'gateway' => 'required'
         ]);
@@ -26,6 +30,7 @@ class PaymentController extends Controller
         $user = auth()->user();
         $gateway = $request->input('gateway');
         $orderId = $request->input('order_id');
+        $stripekey = $request->input('stripekwy');
 
         $order = Order::where('id', $orderId)
             ->where('user_id', $user->id)
@@ -72,7 +77,9 @@ class PaymentController extends Controller
             ->where('status', 'active')
             ->first();
 
+
         if (!$paymentChannel) {
+
             $toastData = [
                 'title' => trans('cart.fail_purchase'),
                 'msg' => trans('public.channel_payment_disabled'),
@@ -82,18 +89,26 @@ class PaymentController extends Controller
         }
 
         $order->payment_method = Order::$paymentChannel;
-        $order->save();
+
+
 
 
         try {
-            $channelManager = ChannelManager::makeChannel($paymentChannel);
-            $redirect_url = $channelManager->paymentRequest($order);
 
-            if (in_array($paymentChannel->class_name, ['Paytm', 'Payu', 'Zarinpal', 'Stripe', 'Paysera', 'MercadoPago', 'Cashu', 'Iyzipay'])) {
-                return $redirect_url;
-            }
 
-            return Redirect::away($redirect_url);
+
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $charge = Charge::create ([
+
+                 "amount" => $order->total_amount * 100,
+                 "currency" => "usd",
+                 "source" => $request->stripeToken,
+                 "description" => "Test payment from mojavilms."
+         ]);
+
+
+            return back()->with('success','Payment Successfull');
 
         } catch (\Exception $exception) {
             $toastData = [
@@ -101,6 +116,7 @@ class PaymentController extends Controller
                 'msg' => trans('cart.gateway_error'),
                 'status' => 'error'
             ];
+
             return redirect('cart')->with(['toast' => $toastData]);
         }
     }
@@ -113,6 +129,7 @@ class PaymentController extends Controller
 
         try {
             $channelManager = ChannelManager::makeChannel($paymentChannel);
+
             $order = $channelManager->verify($request);
 
             if (!empty($order)) {
@@ -148,6 +165,8 @@ class PaymentController extends Controller
 
     private function setPaymentAccounting($order, $type = null)
     {
+
+
         if ($order->is_charge_account) {
             Accounting::charge($order);
         } else {

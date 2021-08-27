@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +38,8 @@ Route::group(['namespace' => 'Web', 'middleware' => ['impersonate', 'share']], f
     Route::get('/stripe', function () {
         return view('web.default.cart.channels.stripe');
     });
+
+
 
     Route::fallback(function () {
         return view("errors.404", ['pageTitle' => trans('public.error_404_page_title')]);
@@ -183,4 +186,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['impersonate', 'share']], f
         Route::post('/{methodName}', 'JobsController@index');
     });
 });
+Route::post('stripe', 'web\StripePaymentController@stripePost')->name('stripe.post');
+Route::get('stripe', 'web\StripePaymentController@index')->name('stripe');
+
 

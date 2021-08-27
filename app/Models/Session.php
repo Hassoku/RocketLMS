@@ -7,8 +7,9 @@ use Spatie\CalendarLinks\Link;
 
 class Session extends Model
 {
+
     public $timestamps = false;
-    protected $guarded = ['id'];
+    protected $guarded = [];
     protected $table = 'sessions';
     protected $dateFormat = 'U';
 

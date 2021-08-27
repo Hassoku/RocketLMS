@@ -15,10 +15,6 @@
 
         $(this).addClass('loadingbar primary').prop('disabled', true);
 
-        if (gateway === 'Razorpay') {
-            $('.razorpay-payment-button').trigger('click');
-        }  else {
-            $(this).closest('form').trigger('submit');
-        }
+
     });
 })(jQuery);

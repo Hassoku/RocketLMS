@@ -166,6 +166,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
 
 
+
+
         /*
          * Package Service Providers...
          */
@@ -183,7 +185,6 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
         KingFlamez\Rave\RaveServiceProvider::class,
-
 
     ],
 

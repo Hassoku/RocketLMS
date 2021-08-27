@@ -1,6 +1,4 @@
 @extends(getTemplate().'.layouts.app')
-
-
 @section('content')
     <section class="cart-banner position-relative text-center">
         <h1 class="font-30 text-white font-weight-bold">{{ trans('cart.shopping_cart') }}</h1>

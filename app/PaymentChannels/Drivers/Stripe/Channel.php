@@ -2,12 +2,13 @@
 
 namespace App\PaymentChannels\Drivers\Stripe;
 
+use Stripe\Charge;
+use Stripe\Stripe;
 use App\Models\Order;
-use App\Models\PaymentChannel;
-use App\PaymentChannels\IChannel;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
-use Stripe\Stripe;
+use App\Models\PaymentChannel;
+use App\PaymentChannels\IChannel;
 
 class Channel implements IChannel
 {
@@ -28,33 +29,47 @@ class Channel implements IChannel
 
     public function paymentRequest(Order $order)
     {
+
+
         $price = $order->total_amount;
         $generalSettings = getGeneralSettings();
         $currency = currency();
 
         $stripe = Stripe::setApiKey(env('STRIPE_SECRET'));
 
+        $charge = Charge::create ([
+            'amount' => $currency,
+            'currency' => $currency,
 
-        $checkout = Session::create([
-            'payment_method_types' => ['card'],
-            'line_items' => [[
-                'price_data' => [
-                    'currency' => $currency,
-                    'unit_amount_decimal' => $currency == 'USD' ? $price * 100 : $price,
-                    'product_data' => [
-                        'name' => $generalSettings['site_name'] . ' payment',
-                    ],
-                ],
-                'quantity' => 1,
-            ]],
-            'mode' => 'payment',
-            'success_url' => $this->makeCallbackUrl($order, 'success'),
-            'cancel_url' => $this->makeCallbackUrl($order, 'cancel'),
-        ]);
+            "source" => $order->token,
+            "description" => "Test payment from mojavilms."
+    ]);
+    dd($charge);
+        //  $checkout = Session::create([
+        //     'payment_method_types' => ['card'],
+        //     'line_items' => [[
+        //         'price_data' => [
+        //             'currency' => $currency,
+        //             'currency' => $currency,
+        //             'product_data' => [
+        //                 'name' => $generalSettings['site_name'] . ' payment',
+        //             ],
+        //         ],
+        //         'quantity' => 1,
+        //     ]],
+        //     'mode' => 'payment',
+        //     'success_url' => $this->makeCallbackUrl($order, 'success'),
+        //     'cancel_url' => $this->makeCallbackUrl($order, 'cancel'),
+        // ]);
 
-        /*$order->update([
-            'reference_id' => $checkout->id,
-        ]);*/
+
+
+
+
+
+        // $order->update([
+        //     'reference_id' => $checkout->id,
+        // ]);
 
         $Html = '<script src="https://js.stripe.com/v3/"></script>';
         $Html .= '<script type="text/javascript">let stripe = Stripe("' . $this->api_key . '");';
@@ -65,7 +80,8 @@ class Channel implements IChannel
 
     private function makeCallbackUrl($order, $status)
     {
-        return url("/payments/verify/Stripe?status=$status&order_id=$order->id&session_id={CHECKOUT_SESSION_ID}");
+                return  url("/payments/verify/Stripe?status=$status&order_id=$order->id&session_id={CHECKOUT_SESSION_ID}");
+
     }
 
     public function verify(Request $request)
@@ -105,6 +121,8 @@ class Channel implements IChannel
             'msg' => trans('cart.gateway_error'),
             'status' => 'error'
         ];
+
+
 
         return back()->with(['toast' => $toastData])->withInput();
     }
