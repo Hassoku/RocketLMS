@@ -399,11 +399,13 @@ class WebinarController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $user = auth()->user();
 
         if (!$user->isTeacher() and !$user->isOrganization()) {
             abort(404);
         }
+       
 
         $rules = [];
         $data = $request->all();
