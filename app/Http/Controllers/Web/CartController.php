@@ -222,7 +222,7 @@ class CartController extends Controller
 
         $discountId = $request->input('discount_id');
 
-        $paymentChannels = PaymentChannel::where('status', 'active')->limit(2)->get();
+        $paymentChannels = PaymentChannel::where('status', 'active')->where('id','2')->get();
 
         $discountCoupon = Discount::where('id', $discountId)->first();
 
