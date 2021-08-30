@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Mail\SendNotifications;
+use Mail;
+use App\User;
 use App\Models\Group;
 use App\Models\Notification;
-use App\Models\NotificationStatus;
-use App\User;
 use Illuminate\Http\Request;
+use App\Mail\SendNotifications;
+use App\Models\NotificationStatus;
+use App\Http\Controllers\Controller;
 
 class NotificationsController extends Controller
 {
@@ -69,7 +70,7 @@ class NotificationsController extends Controller
         if (!empty($data['user_id'])) {
             $user = \App\User::where('id', $data['user_id'])->first();
             if (!empty($user) and !empty($user->email)) {
-                \Mail::to($user->email)->send(new SendNotifications(['title' => $data['title'], 'message' => $data['message']]));
+                Mail::to($user->email)->send(new SendNotifications(['title' => $data['title'], 'message' => $data['message']]));
             }
         }
 

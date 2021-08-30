@@ -99,6 +99,7 @@ class PaymentController extends Controller
 
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
+
         $charge = Charge::create ([
 
                  "amount" => $order->total_amount * 100,
