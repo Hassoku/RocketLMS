@@ -20,9 +20,10 @@ Route::group(['namespace' => 'Panel', 'prefix' => 'panel', 'middleware' => ['imp
 
     Route::group(['prefix' => 'assignments'], function () {
         Route::get('/', 'AssignmentController@index');
-        Route::post('/store', 'AssignmentController@store');
-        Route::get('/create','AssignmentController@create');
-        Route::get('/my-assignments','AssignmentController@myAssignment');
+        Route::get('files/{id}/', 'AssignmentController@download')->name('download');
+        Route::get('/upload/assignment','AssignmentController@upload');
+    
+ 
 
     });
 

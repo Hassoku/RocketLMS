@@ -22,6 +22,7 @@ class PaymentController extends Controller
 {
     public function paymentRequest(Request $request)
     {
+       
 
         $this->validate($request, [
             'gateway' => 'required'
@@ -106,6 +107,13 @@ class PaymentController extends Controller
                  "currency" => "usd",
                  "source" => $request->stripeToken,
                  "description" => "Test payment from mojavilms."
+         ]);
+
+
+         $purchase = Purshase::create([
+             "user_id" => Auth::user()->id,
+             "webinar_id" => $order->webinar_id,
+
          ]);
 
 

@@ -9,7 +9,9 @@ use App\Models\Assignment;
 class AssignmentController extends Controller
 {
     public function index(){
-        return view('web.default.panel.assignments.list');
+        $assignments = Assignment::with('course')->paginate(5);
+      
+        return view('web.default.panel.assignments.list',compact('assignments'));
     }
 
     public function create(){
@@ -19,4 +21,11 @@ class AssignmentController extends Controller
     public function store(){
 
     }
+
+    public function download($id){
+
+
+        $file = Assignment::where('id',$id)->first();
+        return response()->download(public_path($file->file));
+     }
 }

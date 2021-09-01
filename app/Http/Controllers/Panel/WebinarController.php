@@ -739,6 +739,7 @@ class WebinarController extends Controller
     {
         $user = auth()->user();
         $webinarIds = $user->getPurchasedCoursesIds();
+    
 
         $query = Webinar::whereIn('id', $webinarIds);
 

@@ -148,6 +148,7 @@ border: none !important;
         <form action="/payments/payment-request" method="post" class=" mt-25"  id="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
             {{ csrf_field() }}
             <input type="hidden" name="order_id" value="{{ $order->id }}">
+            <input type="hidden" name="order_id" value="{{ $order->id }}">
             <input id="key" type="hidden" name="stripe_key" value="{{ env('STRIPE_KEY') }}">
 
             <div class="row">

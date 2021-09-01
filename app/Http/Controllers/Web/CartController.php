@@ -238,6 +238,7 @@ class CartController extends Controller
             $calculate = $this->calculatePrice($carts, $user, $discountCoupon);
 
             $order = $this->createOrderAndOrderItems($carts, $calculate, $user, $discountCoupon);
+         
 
             $razorpay = false;
             foreach ($paymentChannels as $paymentChannel) {

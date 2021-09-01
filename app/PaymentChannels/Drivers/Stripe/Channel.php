@@ -44,7 +44,7 @@ class Channel implements IChannel
             "source" => $order->token,
             "description" => "Test payment from mojavilms."
     ]);
-    dd($charge);
+
         //  $checkout = Session::create([
         //     'payment_method_types' => ['card'],
         //     'line_items' => [[
