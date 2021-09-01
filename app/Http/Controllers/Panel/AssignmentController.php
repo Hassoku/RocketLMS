@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\panel;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\AssignmentUpload;
 use App\Models\Assignment;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AssignmentController extends Controller
 {
@@ -35,4 +36,22 @@ class AssignmentController extends Controller
         $file = Assignment::where('id',$id)->first();
         return view('web.default.panel.assignments.upload',compact('file'));
      }
+
+
+     public function submit_assignment(Request $request){
+
+     
+
+       $upload = new AssignmentUpload();
+      
+       $upload->assignment_id = $request->assignment_id;
+       $upload->file = $request->file;
+       if($upload->save()){
+           return back()->with('message','Assignment Uploaded');
+       }
+
+
+     }
+
+
 }

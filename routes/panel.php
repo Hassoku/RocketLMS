@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Panel', 'prefix' => 'panel', 'middleware' => ['imp
         Route::get('/', 'AssignmentController@index');
         Route::get('files/{id}/', 'AssignmentController@download')->name('download');
         Route::get('/upload/{id}','AssignmentController@upload');
+        Route::post('/submit','AssignmentController@submit_assignment');
 
 
 
