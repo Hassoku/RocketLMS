@@ -19,16 +19,16 @@ class CommentsController extends Controller
 
     public function __construct(Request $request)
     {
-        $page = Route::current()->parameter('page');
-        $this->page = $page;
+        // $page = Route::current()->parameter('page');
+        // $this->page = $page;
 
-        if ($page == 'webinars') {
-            $this->item = 'webinar';
-            $this->item_column = 'webinar_id';
-        } else {
-            $this->item = 'blog';
-            $this->item_column = 'blog_id';
-        }
+        // if ($page == 'webinars') {
+        //     $this->item = 'webinar';
+        //     $this->item_column = 'webinar_id';
+        // } else {
+        //     $this->item = 'blog';
+        //     $this->item_column = 'blog_id';
+        // }
     }
 
     public function index(Request $request)

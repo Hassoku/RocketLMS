@@ -14,9 +14,9 @@ class AddSpecialOfferIdToCartTable extends Migration
     public function up()
     {
         Schema::table('cart', function (Blueprint $table) {
-            $table->integer('special_offer_id')->unsigned()->nullable()->after('ticket_id');
+            // $table->integer('special_offer_id')->unsigned()->nullable()->after('ticket_id');
 
-            $table->foreign('special_offer_id')->on('special_offers')->references('id')->onDelete('cascade');
+            // $table->foreign('special_offer_id')->on('special_offers')->references('id')->onDelete('cascade');
         });
     }
 

@@ -24,15 +24,15 @@
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/admin/assignments/{{ !empty($assignment) ? $assignment->id.'/update' : 'store' }}"
-                                  method="Post">
+                            <form action="/admin/assignments/store" method="post" enctype="multipart/form-data">
+
                                 {{ csrf_field() }}
 
                                 <div class="form-group">
                                     <label>Title</label>
                                     <input type="text" name="title"
                                            class="form-control  @error('title') is-invalid @enderror"
-                                           value="{{ !empty($assignment) ? $assignment->title : old('title') }}"
+
                                            placeholder="{{ trans('admin/main.choose_title') }}"/>
                                     @error('title')
                                     <div class="invalid-feedback">
@@ -43,12 +43,15 @@
                                 <div class="form-group">
                                     <label>Course</label>
 
-                                    <select name="course_id" class="form-control  @error('course') is-invalid @enderror">
+                                    <select name="course" class="form-control  @error('course') is-invalid @enderror">
                                         <option>
                                             Select Course
                                         </option>
-                                        <option></option>
-                                    </select>
+                                           @foreach($courses  as $course)
+                                        <option value="{{ $course->id }}">{{ $course->title }}</option>
+                                        @endforeach
+
+                                     </select>
                                     @error('course')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -58,7 +61,7 @@
                                 <div class="form-group">
                                     <label>Description</label>
 
-                                     <textarea class="form-control  @error('description') is-invalid @enderror">
+                                     <textarea class="form-control  @error('description') is-invalid @enderror" name="description">
                                     </textarea>
                                     @error('descriptiom')
                                     <div class="invalid-feedback">
@@ -75,17 +78,12 @@
                                                 <i class="fa fa-upload"></i>
                                             </button>
                                         </div>
-                                        <input type="text" name="file" id="icon" value="{{ !empty($assignment) ? $assignment->icon : old('icon') }}" class="form-control @error('icon') is-invalid @enderror"/>
+                                        <input type="text" name="file" id="icon" value="" class="form-control @error('icon') is-invalid @enderror"/>
                                         <div class="invalid-feedback">@error('file') {{ $message }} @enderror</div>
                                     </div>
                                 </div>
-
-
-
-
-
                                 <div class="text-right mt-4">
-                                    <button class="btn btn-primary">{{ trans('admin/main.submit') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ trans('admin/main.submit') }}</button>
                                 </div>
                             </form>
 

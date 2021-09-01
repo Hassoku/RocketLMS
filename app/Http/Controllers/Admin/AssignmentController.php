@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Webinar;
 use App\Models\Category;
 use App\Models\Assignment;
 use Illuminate\Http\Request;
@@ -20,20 +21,40 @@ class AssignmentController extends Controller
     {
 
 
-        $categories = Category::where('parent_id', null)
-            ->orderBy('id', 'desc')
-            ->paginate(10);
-        $data = [
-            'assignment' => $categories,
-            'pageTitle' => trans('Assignments'),
-        ];
+        $courses =  Webinar::where('status', 'active')
+        ->get();
 
-        return view('admin.assignments.create', $data);
+
+        // $data = [
+        //     'assignment' =>$courses ,
+        //     'pageTitle' => trans('Assignments'),
+        // ];
+
+        return view('admin.assignments.create', compact('courses'));
     }
 
     public function store(Request $request)
     {
-        $this->authorize('admin_categories_create');
+        $assignment = new Assignment;
+
+        $validate  = $request->validate([
+
+            'title' => 'required',
+            'file' => 'required',
+            'course' => 'required'
+
+        ]);
+
+        $assignment->title = $request->title;
+        $assignment->file = $request->file;
+        $assignment->course = $request->course;
+        $assignment->description = $request->description;
+        $assignment->save();
+
+
+        return back()->with('message','Assignment Uploaded');
+
+
 
     }
 
