@@ -100,6 +100,26 @@
                     </ul>
                 </li>
             @endcan()
+
+            <li class="nav-item dropdown {{ (request()->is('admin/assignments*')) ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+                    <i class="fas fa-th"></i>
+                    <span>Assignments</span>
+                </a>
+                <ul class="dropdown-menu">
+
+                        <li class="{{ (request()->is('admin/assignments')) ? 'active' : '' }}">
+                            <a class="nav-link" href="/admin/assignments">List</a>
+                        </li>
+
+
+                        <li class="{{ (request()->is('admin/assignments/create')) ? 'active' : '' }}">
+                            <a class="nav-link" href="/admin/assignments/create">New</a>
+                        </li>
+
+                </ul>
+            </li>
+
 {{--
             @can('admin_filters')
                 <li class="nav-item dropdown {{ (request()->is('admin/filters*')) ? 'active' : '' }}">

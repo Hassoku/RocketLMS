@@ -18,6 +18,14 @@ Route::group(['namespace' => 'Panel', 'prefix' => 'panel', 'middleware' => ['imp
         Route::post('/offlineToggle', 'UserController@offlineToggle');
     });
 
+    Route::group(['prefix' => 'assignments'], function () {
+        Route::get('/', 'AssignmentController@index');
+        Route::post('/store', 'AssignmentController@store');
+        Route::get('/create','AssignmentController@create');
+        Route::get('/my-assignments','AssignmentController@myAssignment');
+
+    });
+
     Route::group(['prefix' => 'webinars'], function () {
         Route::group(['middleware' => 'user.not.access'], function () {
             Route::get('/', 'WebinarController@index');
@@ -153,6 +161,8 @@ Route::group(['namespace' => 'Panel', 'prefix' => 'panel', 'middleware' => ['imp
         Route::get('/', 'CertificateController@lists');
         Route::get('/achievements', 'CertificateController@achievements');
     });
+
+
 
     Route::group(['prefix' => 'meetings'], function () {
         Route::get('/reservation', 'ReserveMeetingController@reservation');

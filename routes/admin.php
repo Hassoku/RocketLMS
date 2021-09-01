@@ -161,6 +161,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'web'
             });
         });
 
+        Route::group(['prefix' => 'assignments'], function () {
+            Route::get('/', 'AssignmentController@index');
+            Route::get('/create', 'AssignmentController@create');
+            Route::post('/store', 'AssignmentController@store');
+            Route::get('/{id}/edit', 'AssignmentController@edit');
+            Route::post('/{id}/update', 'AssignmentController@update');
+            Route::get('/{id}/delete', 'AssignmentController@destroy');
+
+
+        });
+
+
         Route::group(['prefix' => 'filters'], function () {
             Route::get('/', 'FilterController@index');
             Route::get('/create', 'FilterController@create');

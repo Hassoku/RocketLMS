@@ -58,6 +58,7 @@
         @endif
     </div>
 
+
     <ul class="sidebar-menu pt-10 @if(!empty($authUser->userGroup)) has-user-group @endif" data-simplebar @if((!empty($isRtl) and $isRtl)) data-simplebar-direction="rtl" @endif>
 
         <li class="sidenav-item {{ (request()->is('panel')) ? 'sidenav-item-active' : '' }}">
@@ -160,6 +161,7 @@
                 </ul>
             </div>
         </li>
+
 {{--
         <li class="sidenav-item {{ (request()->is('panel/meetings') or request()->is('panel/meetings/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#meetingCollapse" role="button" aria-expanded="false" aria-controls="meetingCollapse">
@@ -213,6 +215,38 @@
 
                     <li class="mt-5 {{ (request()->is('panel/quizzes/my-results')) ? 'active' : '' }}">
                         <a href="/panel/quizzes/my-results">{{ trans('public.my_results') }}</a>
+                    </li>
+
+                    {{-- <li class="mt-5 {{ (request()->is('panel/quizzes/opens')) ? 'active' : '' }}">
+                        <a href="/panel/quizzes/opens">{{ trans('public.not_participated') }}</a>
+                    </li> --}}
+                </ul>
+            </div>
+        </li>
+        <li class="sidenav-item {{ (request()->is('panel/assignments') or request()->is('panel/assignments/*')) ? 'sidenav-item-active' : '' }}">
+            <a class="d-flex align-items-center" data-toggle="collapse" href="#assignmentsCollapse" role="button" aria-expanded="false" aria-controls="quizzesCollapse">
+                <span class="sidenav-item-icon mr-10">
+                    @include('web.default.panel.includes.sidebar_icons.quizzes')
+                </span>
+                <span class="font-14 text-dark-blue font-weight-500">Assignments</span>
+            </a>
+
+            <div class="collapse {{ (request()->is('panel/quizzes') or request()->is('panel/quizzes/*')) ? 'show' : '' }}" id="assignmentsCollapse">
+                <ul class="sidenav-item-collapse">
+                    @if($authUser->isOrganization() || $authUser->isTeacher())
+                        {{-- <li class="mt-5 {{ (request()->is('panel/quizzes/new')) ? 'active' : '' }}">
+                            <a href="/panel/quizzes/new">{{ trans('quiz.new_quiz') }}</a>
+                        </li> --}}
+                        {{-- <li class="mt-5 {{ (request()->is('panel/assignments')) ? 'active' : '' }}">
+                            <a href="/panel/assignments">{{ trans('public.list') }}</a>
+                        </li>
+                        <li class="mt-5 {{ (request()->is('panel/assignments/create')) ? 'active' : '' }}">
+                            <a href="/panel/assignments/create">create</a>
+                        </li> --}}
+                    @endif
+
+                    <li class="mt-5 {{ (request()->is('panel/assignments/my-assignments')) ? 'active' : '' }}">
+                        <a href="">My Assignments</a>
                     </li>
 
                     {{-- <li class="mt-5 {{ (request()->is('panel/quizzes/opens')) ? 'active' : '' }}">
