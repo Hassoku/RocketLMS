@@ -42,8 +42,7 @@
     });
 
 
-// ********************************************
-// ********************************************
+
 // date & time piker
     window.resetDatePickers = () => {
         if (jQuery().daterangepicker) {
@@ -95,8 +94,7 @@
         }
     };
     resetSelect2();
-// ********************************************
-// ********************************************
+
 // inputtags
     if (jQuery().tagsinput) {
         var input_tags = $('.inputtags');
