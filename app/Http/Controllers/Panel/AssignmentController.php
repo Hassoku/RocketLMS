@@ -28,4 +28,11 @@ class AssignmentController extends Controller
         $file = Assignment::where('id',$id)->first();
         return response()->download(public_path($file->file));
      }
+
+     public function download($id){
+
+
+        $file = Assignment::where('id',$id)->first();
+        return view('web.default.panel.assignments.upload');
+     }
 }
