@@ -12,9 +12,10 @@ class AssignmentController extends Controller
 {
     public function index()
     {
+        $assignments = Assignment::with('course')->paginate(10);
+      
 
-
-        return view('admin.assignments.lists');
+        return view('admin.assignments.lists',compact('assignments'));
     }
 
     public function create()
@@ -47,7 +48,7 @@ class AssignmentController extends Controller
 
         $assignment->title = $request->title;
         $assignment->file = $request->file;
-        $assignment->course = $request->course;
+        $assignment->webinar_id = $request->course;
         $assignment->description = $request->description;
         $assignment->save();
 

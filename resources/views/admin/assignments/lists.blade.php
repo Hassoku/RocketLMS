@@ -27,37 +27,38 @@
                                         <th>File</th>
                                         <th class="text-left">Title</th>
                                         <th>Course</th>
-                                        <th>Teacher</th>
+                                        
                                         <th>Action</th>
                                     </tr>
-                                    {{-- @foreach($categories as $category) --}}
-{{--
+                                    @foreach($assignments as $assignment)
+
                                         <tr>
                                             <td>
-                                                <img src="{{ $category->icon }}" width="30" alt="">
+                                                {{-- <iframe src="{{ $assignment->file }}" frameborder="0" style="width:30px"></iframe> --}}
+                                                {{-- <img src="{{ $assignment->file }}" width="30" alt=""> --}}
                                             </td>
-                                            <td class="text-left">{{ $category->title }}</td>
-                                            <td>{{ count($category->getCategoryCourses()) }}</td>
-                                            <td>{{ count($category->getCategoryInstructorsIdsHasMeeting()) }}</td>
+                                            <td class="text-left">{{ $assignment->title }}</td>
+                                            <td>{{ $assignment->course->title }}</td>
+                                          
                                             <td>
                                                 @can('admin_categories_edit')
-                                                    <a href="/admin/categories/{{ $category->id }}/edit"
+                                                    <a href="/admin/assignments/{{ $assignment->id }}/edit"
                                                        class="btn-transparent btn-sm text-primary">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 @endcan
                                                 @can('admin_categories_delete')
-                                                    @include('admin.includes.delete_button',['url' => '/admin/categories/'.$category->id.'/delete'])
+                                                    @include('admin.includes.delete_button',['url' => '/admin/assignments/'.$assignment->id.'/delete'])
                                                 @endcan
                                             </td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach 
                                 </table>
                             </div>
                         </div>
 
                         <div class="card-footer text-center">
-                            {{-- {{ $categories->links() }} --}}
+                            {{ $assignments->links() }}
                         </div>
                     </div>
                 </div>
