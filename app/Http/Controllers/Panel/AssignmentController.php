@@ -10,7 +10,7 @@ class AssignmentController extends Controller
 {
     public function index(){
         $assignments = Assignment::with('course')->paginate(5);
-      
+
         return view('web.default.panel.assignments.list',compact('assignments'));
     }
 
@@ -29,10 +29,10 @@ class AssignmentController extends Controller
         return response()->download(public_path($file->file));
      }
 
-     public function download($id){
+     public function upload($id){
 
 
         $file = Assignment::where('id',$id)->first();
-        return view('web.default.panel.assignments.upload');
+        return view('web.default.panel.assignments.upload',compact('file'));
      }
 }

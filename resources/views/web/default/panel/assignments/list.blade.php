@@ -8,7 +8,7 @@
 <div class="section-header">
     <h1>Assignments</h1>
     <div class="section-header-breadcrumb">
-       
+
         <div class="breadcrumb-item"></div>
     </div>
 </div>
@@ -22,7 +22,7 @@
                             <th>File</th>
                             <th class="text-left">Title</th>
                             <th>Course</th>
-                            
+
                             <th>Action</th>
                         </tr>
                         @foreach($assignments as $assignment)
@@ -34,21 +34,21 @@
                                 </td>
                                 <td class="text-left">{{ $assignment->title }}</td>
                                 <td>{{ $assignment->course->title }}</td>
-                              
+
                                 <td>
-                                   
+
                                         <a href="/panel/assignments/files/{{$assignment->id}}" class="btn-sm btn-primary w-10 mt-2">
                                            Download
                                         </a>|
-                                        <a href="" class="btn-sm btn-primary w-10 mt-2">
+                                        <a href="/panel/assignments/upload/{{ $assignment->id }}" class="btn-sm btn-primary w-10 mt-2">
                                              Upload
                                          </a>
-                                  
-                             
-                                 
+
+
+
                                 </td>
                             </tr>
-                        @endforeach 
+                        @endforeach
                     </table>
                 </div>
             </div>
