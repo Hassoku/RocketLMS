@@ -13,7 +13,7 @@
                 <div class="col-4 d-flex align-items-center justify-content-center">
                     <div class="d-flex flex-column align-items-center text-center">
                         <img src="/assets/default/img/activity/webinars.svg" width="64" height="64" alt="">
-                        <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ $allWebinarsCount }}</strong>
+                        {{-- <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ $allWebinarsCount }}</strong> --}}
                         <span class="font-16 text-gray font-weight-500">{{ trans('panel.purchased') }}</span>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                 <div class="col-4 d-flex align-items-center justify-content-center">
                     <div class="d-flex flex-column align-items-center text-center">
                         <img src="/assets/default/img/activity/hours.svg" width="64" height="64" alt="">
-                        <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ convertMinutesToHourAndMinute($hours) }}</strong>
+                        {{-- <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ convertMinutesToHourAndMinute($hours) }}</strong> --}}
                         <span class="font-16 text-gray font-weight-500">{{ trans('home.hours') }}</span>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="col-4 d-flex align-items-center justify-content-center">
                     <div class="d-flex flex-column align-items-center text-center">
                         <img src="/assets/default/img/activity/upcoming.svg" width="64" height="64" alt="">
-                        <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ $upComing }}</strong>
+                        {{-- <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ $upComing }}</strong> --}}
                         <span class="font-16 text-gray font-weight-500">{{ trans('panel.upcoming') }}</span>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
 
         @if(!empty($webinars) and !$webinars->isEmpty())
             @foreach($webinars as $webinar)
-                @php
+                {{-- @php
                     $lastSession = $webinar->lastSession();
                     $nextSession = $webinar->nextSession();
                     $isProgressing = false;
@@ -63,13 +63,13 @@
                     if($webinar->start_date <= time() and !empty($lastSession) and $lastSession->date > time()) {
                         $isProgressing=true;
                     }
-                @endphp
+                @endphp --}}
 
                 <div class="row mt-30">
                     <div class="col-12">
                         <div class="webinar-card webinar-list d-flex">
                             <div class="image-box">
-                                <img src="{{ $webinar->getImage() }}" class="img-cover" alt="">
+                                <img src="{{ $webinar->webinar->thumbnail }}" class="img-cover" alt="">
 
                                 @if($webinar->type == 'webinar')
                                     @if($webinar->start_date > time())
@@ -85,7 +85,7 @@
                                     <span class="badge badge-secondary">{{ trans('webinars.'.$webinar->type) }}</span>
                                 @endif
 
-                                @php
+                                {{--@php
                                     $percent = $webinar->getProgress();
 
                                     if($webinar->isWebinar()){
@@ -97,16 +97,16 @@
                                     } else {
                                            $progressTitle = trans('public.course_learning_passed',['percent' => $percent]);
                                     }
-                                @endphp
+                                @endphp--}}
 
-                                <div class="progress cursor-pointer" data-toggle="tooltip" data-placement="top" title="{{ $progressTitle }}">
-                                    <span class="progress-bar" style="width: {{ $percent }}%"></span>
+                                <div class="progress cursor-pointer" data-toggle="tooltip" data-placement="top" title="">
+                                    <span class="progress-bar" style="width: %"></span>
                                 </div>
                             </div>
 
                             <div class="webinar-card-body w-100 d-flex flex-column">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <a href="{{ $webinar->getUrl() }}">
+                                    <a href="">
                                         <h3 class="webinar-title font-weight-bold font-16 text-dark-blue">
                                             {{ $webinar->title }}
                                             <span class="badge badge-dark ml-10 status-badge-dark">{{ trans('webinars.'.$webinar->type) }}</span>
@@ -119,26 +119,26 @@
                                         </button>
 
                                         <div class="dropdown-menu">
-                                            @if(!empty($webinar->start_date) and ($webinar->start_date > time() or ($webinar->isProgressing() and !empty($nextSession))))
+                                            {{-- @if(!empty($webinar->start_date) and ($webinar->start_date > time() or ($webinar->isProgressing() and !empty($nextSession))))
                                                 <button type="button" data-webinar-id="{{ $webinar->id }}" class="join-purchase-webinar webinar-actions btn-transparent d-block">{{ trans('footer.join') }}</button>
-                                            @endif
+                                            @endif --}}
 
-                                            @if(!empty($webinar->downloadable) or (!empty($webinar->files) and count($webinar->files)))
+                                            {{-- @if(!empty($webinar->downloadable) or (!empty($webinar->files) and count($webinar->files)))
                                                 <a href="{{ $webinar->getUrl() }}?tab=content" target="_blank" class="webinar-actions d-block mt-10">{{ trans('home.download') }}</a>
-                                            @endif
+                                            @endif --}}
 
                                             @if($webinar->price > 0)
                                                 <a href="/panel/webinars/{{ $webinar->id }}/invoice" target="_blank" class="webinar-actions d-block mt-10">{{ trans('public.invoice') }}</a>
                                             @endif
 
-                                            <a href="{{ $webinar->getUrl() }}?tab=reviews" target="_blank" class="webinar-actions d-block mt-10">{{ trans('public.feedback') }}</a>
+                                            {{-- <a href="{{ $webinar->getUrl() }}?tab=reviews" target="_blank" class="webinar-actions d-block mt-10">{{ trans('public.feedback') }}</a> --}}
                                         </div>
                                     </div>
                                 </div>
 
-                                @include(getTemplate() . '.includes.webinar.rate',['rate' => $webinar->getRate()])
+                                {{-- @include(getTemplate() . '.includes.webinar.rate',['rate' => $webinar->getRate()]) --}}
 
-                                <div class="webinar-price-box mt-15">
+                                {{-- <div class="webinar-price-box mt-15">
                                     @if($webinar->price > 0)
                                         @if($webinar->bestTicket() < $webinar->price)
                                             <span class="real">{{ $currency }}{{ number_format($webinar->bestTicket(),2) }}</span>
@@ -149,7 +149,7 @@
                                     @else
                                         <span class="real">{{ trans('public.free') }}</span>
                                     @endif
-                                </div>
+                                </div> --}}
 
                                 <div class="d-flex align-items-center justify-content-between flex-wrap mt-auto">
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
@@ -162,7 +162,7 @@
                                         <span class="stat-value">{{ !empty($webinar->category_id) ? $webinar->category->title : '' }}</span>
                                     </div>
 
-                                    @if($webinar->type == 'webinar')
+                                    {{-- @if($webinar->type == 'webinar')
                                         @if($webinar->isProgressing() and !empty($nextSession))
                                             <div class="d-flex align-items-start flex-column mt-20 mr-15">
                                                 <span class="stat-title">{{ trans('webinars.next_session_duration') }}:</span>
@@ -184,16 +184,16 @@
                                                 <span class="stat-value">{{ dateTimeFormat($webinar->start_date,'j F Y') }}</span>
                                             </div>
                                         @endif
-                                    @endif
+                                    @endif --}}
 
-                                    <div class="d-flex align-items-start flex-column mt-20 mr-15">
+                                    {{-- <div class="d-flex align-items-start flex-column mt-20 mr-15">
                                         <span class="stat-title">{{ trans('public.instructor') }}:</span>
                                         <span class="stat-value">{{ $webinar->teacher->full_name }}</span>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
                                         <span class="stat-title">{{ trans('panel.purchase_date') }}:</span>
-                                        <span class="stat-value">{{ dateTimeFormat($webinar->purchast_date,'j F Y') }}</span>
+                                        {{-- <span class="stat-value">{{ dateTimeFormat($webinar->purchast_date,'j F Y') }}</span> --}}
                                     </div>
 
                                 </div>
@@ -221,10 +221,10 @@
 
 @push('scripts_bottom')
     <script>
-        ;(function (){ 
+        ;(function (){
         'use strict'
         var undefinedActiveSessionLang = '{{ trans('webinars.undefined_active_session') }}';
-        }())           
+        }())
     </script>
 
     <script src="/assets/default/js/panel/join_webinar.min.js"></script>

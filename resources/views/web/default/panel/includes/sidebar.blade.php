@@ -17,13 +17,18 @@
 </div>
 
 <div class="panel-sidebar pt-50 pb-25 px-25" id="panelSidebar">
-    <button class="btn-transparent panel-sidebar-close sidebarNavToggle">
+    <button class="btn-transparent  panel-sidebar-close sidebarNavToggle">
         <i data-feather="x" width="24" height="24"></i>
     </button>
 
     <div class="user-info d-flex align-items-center flex-row flex-lg-column justify-content-lg-center">
         <a href="/panel" class="user-avatar">
-            <img src="{{ $authUser->getAvatar() }}" class="img-cover" alt="{{ $authUser->full_name }}">
+
+            <img src="{{ asset($authUser->avatar) }}" class="img-cover" alt="{{ $authUser->full_name }}">
+
+
+
+
         </a>
 
         <div class="d-flex flex-column align-items-center justify-content-center">
@@ -69,8 +74,7 @@
                 <span class="font-14 text-dark-blue font-weight-500">{{ trans('panel.dashboard') }}</span>
             </a>
         </li>
-
-        {{-- @if($authUser->isOrganization())
+ @if($authUser->isOrganization())
             <li class="sidenav-item {{ (request()->is('panel/instructors') or request()->is('panel/manage/instructors*')) ? 'sidenav-item-active' : '' }}">
                 <a class="d-flex align-items-center" data-toggle="collapse" href="#instructorsCollapse" role="button" aria-expanded="false" aria-controls="instructorsCollapse">
                 <span class="sidenav-item-icon mr-10">
@@ -89,9 +93,9 @@
                         </li>
                     </ul>
                 </div>
-            </li> --}}
+            </li>
 
-            {{-- <li class="sidenav-item {{ (request()->is('panel/students') or request()->is('panel/manage/students*')) ? 'sidenav-item-active' : '' }}">
+            <li class="sidenav-item {{ (request()->is('panel/students') or request()->is('panel/manage/students*')) ? 'sidenav-item-active' : '' }}">
                 <a class="d-flex align-items-center" data-toggle="collapse" href="#studentsCollapse" role="button" aria-expanded="false" aria-controls="studentsCollapse">
                 <span class="sidenav-item-icon mr-10">
                     @include('web.default.panel.includes.sidebar_icons.students')
@@ -110,7 +114,7 @@
                     </ul>
                 </div>
             </li>
-        @endif--}}
+        @endif
 
         <li class="sidenav-item {{ (request()->is('panel/webinars') or request()->is('panel/webinars/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#webinarCollapse" role="button" aria-expanded="false" aria-controls="webinarCollapse">
@@ -128,12 +132,12 @@
                         </li> --}}
 
                         <li class="mt-5 {{ (request()->is('panel/webinars')) ? 'active' : '' }}">
-                            <a href="/panel/webinars">{{ trans('panel.my_classes') }}</a>
+                            <a href="/panel/webinars">{{ trans('panel.my_classess') }}</a>
                         </li>
 
-                        {{-- <li class="mt-5 {{ (request()->is('panel/webinars/invitations')) ? 'active' : '' }}">
+                        <li class="mt-5 {{ (request()->is('panel/webinars/invitations')) ? 'active' : '' }}">
                             <a href="/panel/webinars/invitations">{{ trans('panel.invited_classes') }}</a>
-                        </li> --}}
+                        </li>
                     @endif
 
                     @if(!empty($authUser->organ_id))
@@ -279,7 +283,7 @@
             </div>
         </li>
 
-        {{-- <li class="sidenav-item {{ (request()->is('panel/financial') or request()->is('panel/financial/*')) ? 'sidenav-item-active' : '' }}">
+        <li class="sidenav-item {{ (request()->is('panel/financial') or request()->is('panel/financial/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#financialCollapse" role="button" aria-expanded="false" aria-controls="financialCollapse">
                 <span class="sidenav-item-icon mr-10">
                     @include('web.default.panel.includes.sidebar_icons.financial')
@@ -315,7 +319,7 @@
                     </li>
                 </ul>
             </div>
-        </li> --}}
+        </li>
 {{--
         <li class="sidenav-item {{ (request()->is('panel/support') or request()->is('panel/support/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#supportCollapse" role="button" aria-expanded="false" aria-controls="supportCollapse">

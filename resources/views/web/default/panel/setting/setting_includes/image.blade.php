@@ -6,7 +6,7 @@
 
             <div class="form-group">
                 <label class="input-label">{{ trans('auth.profile_image') }}</label>
-                <img src="{{ (!empty($user)) ? $user->getAvatar() : '' }}" alt="" id="profileImagePreview" width="150" height="150" class="rounded-circle my-15 d-block ml-5">
+                <img src="{{ (!empty($user)) ? asset($user->avatar) : '' }}" alt="" id="profileImagePreview" width="150" height="150" class="rounded-circle my-15 d-block ml-5">
 
                 <button id="selectAvatarBtn" type="button" class="btn btn-sm btn-secondary select-image-cropit" data-ref-image="profileImagePreview" data-ref-input="profile_image">
                     <i data-feather="arrow-up" width="18" height="18" class="text-white mr-10"></i>
@@ -14,7 +14,7 @@
                 </button>
 
                 <div class="input-group">
-                    <input type="hidden" name="profile_image" id="profile_image" class="form-control @error('profile_image')  is-invalid @enderror"/>
+                    <input type="hidden" name="profile_image" id="profile_image" class="form-control @error('profile_image')  is-invalid @enderror" />
                     @error('profile_image')
                     <div class="invalid-feedback">
                         {{ $message }}

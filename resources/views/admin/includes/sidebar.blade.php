@@ -649,16 +649,16 @@
             @endcan
 
             @can('admin_sales_list')
-                {{-- <li class="{{ (request()->is('admin/financial/sales*')) ? 'active' : '' }}">
+                <li class="{{ (request()->is('admin/financial/sales*')) ? 'active' : '' }}">
                     <a href="/admin/financial/sales" class="nav-link">
                         <i class="fas fa-list-ul"></i>
                         <span>{{ trans('admin/main.sales_list') }}</span>
                     </a>
-                </li> --}}
+                </li>
             @endcan
 
             @can('admin_payouts')
-                {{-- <li class="nav-item dropdown {{ (request()->is('admin/financial/payouts*')) ? 'active' : '' }}">
+                <li class="nav-item dropdown {{ (request()->is('admin/financial/payouts*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-credit-card"></i> <span>{{ trans('admin/main.payout') }}</span></a>
                     <ul class="dropdown-menu">
                         @can('admin_payouts_list')
@@ -677,10 +677,10 @@
                             </li>
                         @endcan
                     </ul>
-                </li> --}}
+                </li>
             @endcan
 
-            {{-- @can('admin_offline_payments_list')
+            @can('admin_offline_payments_list')
                 <li class="nav-item dropdown {{ (request()->is('admin/financial/offline_payments*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-university"></i> <span>{{ trans('admin/main.offline_payments') }}</span></a>
                     <ul class="dropdown-menu">
@@ -697,7 +697,7 @@
                         </li>
                     </ul>
                 </li>
-            @endcan --}}
+            @endcan
 
             @can('admin_subscribe')
                 <li class="nav-item dropdown {{ (request()->is('admin/financial/subscribes*')) ? 'active' : '' }}">
@@ -730,8 +730,8 @@
             )
                 <li class="menu-header">{{ trans('admin/main.marketing') }}</li>
             @endif
-{{--
-             @can('admin_discount_codes')
+
+             {{--@can('admin_discount_codes')
                 <li class="nav-item dropdown {{ (request()->is('admin/financial/discounts*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-percent"></i>
@@ -795,7 +795,7 @@
                         @endcan
                     </ul>
                 </li>
-            @endcan
+            @endcan--}}
 
             @can('admin_promotion')
                 <li class="nav-item dropdown {{ (request()->is('admin/financial/promotions*')) ? 'active' : '' }}">
@@ -815,7 +815,7 @@
                             </li>
                         @endcan
 
-                        @can('admin_promotion_create')
+                      @can('admin_promotion_create')
                             <li class="{{ (request()->is('admin/financial/promotions/new')) ? 'active' : '' }}">
                                 <a class="nav-link" href="/admin/financial/promotions/new">{{ trans('admin/main.new_plan') }}</a>
                             </li>
@@ -824,7 +824,7 @@
                 </li>
             @endcan
 
-            @can('admin_advertising')
+            {{--@can('admin_advertising')
                 <li class="nav-item dropdown {{ (request()->is('admin/advertising*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-file-image"></i>

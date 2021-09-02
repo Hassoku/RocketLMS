@@ -14,7 +14,9 @@ use Illuminate\Http\Request;
 use App\Models\PaymentChannel;
 use App\Models\ReserveMeeting;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\PaymentChannels\ChannelManager;
+use App\Models\Purchase;
 use Illuminate\Support\Facades\Redirect;
 use App\PaymentChannels\Drivers\Stripe\Channel;
 
@@ -22,7 +24,7 @@ class PaymentController extends Controller
 {
     public function paymentRequest(Request $request)
     {
-       
+
 
         $this->validate($request, [
             'gateway' => 'required'
@@ -110,11 +112,7 @@ class PaymentController extends Controller
          ]);
 
 
-         $purchase = Purshase::create([
-             "user_id" => Auth::user()->id,
-             "webinar_id" => $order->webinar_id,
 
-         ]);
 
 
          $toastData = [

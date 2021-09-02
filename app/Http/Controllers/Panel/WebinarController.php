@@ -2,26 +2,29 @@
 
 namespace App\Http\Controllers\Panel;
 
-use App\Exports\WebinarStudents;
-use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\User;
+use Validator;
 use App\Models\FAQ;
+use App\Models\Tag;
 use App\Models\File;
-use App\Models\Prerequisite;
 use App\Models\Quiz;
 use App\Models\Role;
 use App\Models\Sale;
-use App\Models\Session;
-use App\Models\Tag;
-use App\Models\TextLesson;
+use App\Models\Order;
 use App\Models\Ticket;
-use App\User;
+use App\Models\Session;
 use App\Models\Webinar;
-use App\Models\WebinarPartnerTeacher;
-use App\Models\WebinarFilterOption;
+use App\Models\Category;
+use App\Models\OrderItem;
+use App\Models\TextLesson;
+use App\Models\Prerequisite;
 use Illuminate\Http\Request;
+use App\Exports\WebinarStudents;
+use App\Models\WebinarFilterOption;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
-use Validator;
+use App\Models\WebinarPartnerTeacher;
 
 class WebinarController extends Controller
 {
@@ -405,7 +408,7 @@ class WebinarController extends Controller
         if (!$user->isTeacher() and !$user->isOrganization()) {
             abort(404);
         }
-       
+
 
         $rules = [];
         $data = $request->all();
@@ -737,74 +740,79 @@ class WebinarController extends Controller
 
     public function purchases(Request $request)
     {
-        $user = auth()->user();
-        $webinarIds = $user->getPurchasedCoursesIds();
-    
 
-        $query = Webinar::whereIn('id', $webinarIds);
+        $id = Auth::user()->id;
+        $webinars = OrderItem::where('user_id',$id)->with('webinar')->paginate(5);
 
-        $allWebinars = deepClone($query)->get();
-        $allWebinarsCount = $allWebinars->count();
-        $hours = $allWebinars->sum('duration');
+        // $user = auth()->user();
+        // $webinarIds = $user->getPurchasedCoursesIds();
 
-        $upComing = 0;
-        $time = time();
 
-        foreach ($allWebinars as $webinar) {
-            if (!empty($webinar->start_date) and $webinar->start_date > $time) {
-                $upComing += 1;
-            }
-        }
+        // $query = Webinar::whereIn('id', $webinarIds);
 
-        $onlyNotConducted = $request->get('not_conducted');
-        if (!empty($onlyNotConducted)) {
-            $query->where('start_date', '>', time());
-        }
+        // $allWebinars = deepClone($query)->get();
+        // $allWebinarsCount = $allWebinars->count();
+        // $hours = $allWebinars->sum('duration');
 
-        $webinars = $query->with([
-            'files',
-            'reviews' => function ($query) {
-                $query->where('status', 'active');
-            },
-            'category',
-            'teacher' => function ($query) {
-                $query->select('id', 'full_name');
-            },
-        ])
-            ->withCount([
-                'sales' => function ($query) {
-                    $query->whereNull('refund_at');
-                }
-            ])
-            ->orderBy('created_at', 'desc')
-            ->orderBy('updated_at', 'desc')
-            ->paginate(10);
+        // $upComing = 0;
+        // $time = time();
 
-        foreach ($webinars as $webinar) {
-            $sale = Sale::where('buyer_id', $user->id)
-                ->whereNotNull('webinar_id')
-                ->where('type', 'webinar')
-                ->where('webinar_id', $webinar->id)
-                ->whereNull('refund_at')
-                ->first();
+        // foreach ($allWebinars as $webinar) {
+        //     if (!empty($webinar->start_date) and $webinar->start_date > $time) {
+        //         $upComing += 1;
+        //     }
+        // }
 
-            if (!empty($sale)) {
-                $webinar->purchast_date = $sale->created_at;
-            }
-        }
+        // $onlyNotConducted = $request->get('not_conducted');
+        // if (!empty($onlyNotConducted)) {
+        //     $query->where('start_date', '>', time());
+        // }
 
-        $data = [
-            'pageTitle' => trans('webinars.webinars_purchases_page_title'),
-            'webinars' => $webinars,
-            'allWebinarsCount' => $allWebinarsCount,
-            'hours' => $hours,
-            'upComing' => $upComing
-        ];
+        // $webinars = $query->with([
+        //     'files',
+        //     'reviews' => function ($query) {
+        //         $query->where('status', 'active');
+        //     },
+        //     'category',
+        //     'teacher' => function ($query) {
+        //         $query->select('id', 'full_name');
+        //     },
+        // ])
+        //     ->withCount([
+        //         'sales' => function ($query) {
+        //             $query->whereNull('refund_at');
+        //         }
+        //     ])
+        //     ->orderBy('created_at', 'desc')
+        //     ->orderBy('updated_at', 'desc')
+        //     ->paginate(10);
 
-        return view(getTemplate() . '.panel.webinar.purchases', $data);
+        // foreach ($webinars as $webinar) {
+        //     $sale = Sale::where('buyer_id', $user->id)
+        //         ->whereNotNull('webinar_id')
+        //         ->where('type', 'webinar')
+        //         ->where('webinar_id', $webinar->id)
+        //         ->whereNull('refund_at')
+        //         ->first();
+
+        //     if (!empty($sale)) {
+        //         $webinar->purchast_date = $sale->created_at;
+        //     }
+        // }
+
+        // $data = [
+        //     'pageTitle' => trans('webinars.webinars_purchases_page_title'),
+        //     'webinars' => $webinars,
+        //     'allWebinarsCount' => $allWebinarsCount,
+        //     'hours' => $hours,
+        //     'upComing' => $upComing
+        // ];
+
+        return view(getTemplate() . '.panel.webinar.purchases',compact('webinars'));
     }
 
     public function getJoinInfo(Request $request)
+
     {
         $data = $request->all();
         if (!empty($data['webinar_id'])) {

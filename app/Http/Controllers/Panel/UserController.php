@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Panel;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Newsletter;
-use App\Models\Role;
-use App\Models\UserMeta;
-use App\Models\UserOccupation;
-use App\Models\UserZoomApi;
 use App\User;
+use App\Models\Role;
+use App\Models\Category;
+use App\Models\UserMeta;
+use App\Models\Newsletter;
+use App\Models\UserZoomApi;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\UserOccupation;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -49,6 +50,7 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $data = $request->all();
+
 
 
 
@@ -117,8 +119,11 @@ class UserController extends Controller
 
                 if (!empty($data['profile_image'])) {
 
+
                     $profileImage = $this->createImage($user, $data['profile_image']);
                     $updateData['avatar'] = $profileImage;
+
+
 
 
                 }
@@ -217,14 +222,21 @@ class UserController extends Controller
         $folderPath = "/" . $user->id . '/';
 
         $image_parts = explode(";base64,", $img);
+
         $image_type_aux = explode("image/", $image_parts[0]);
+
         $image_type = $image_type_aux[1];
+
         $image_base64 = base64_decode($image_parts[1]);
-        $file = uniqid() . '.' . $image_type;
-        $t = 'store'.$folderPath.$file;
+        $name = Str::slug($user->full_name, '-')  . "-" . time() . '.' . $image_type;
 
 
-     Storage::disk('public')->put($folderPath . $file, $image_base64);
+
+        $t = 'store'.$folderPath.$name;
+
+
+
+     Storage::disk('public')->put($folderPath .$name, $image_base64);
 
 
 

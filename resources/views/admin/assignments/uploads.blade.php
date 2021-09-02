@@ -27,18 +27,13 @@
 
                                         <th class="text-left">Title</th>
                                         <th class="text-left">Submited By</th>
-
                                         <th>Action</th>
                                     </tr>
                                     @foreach($uploads as $upload)
 
                                         <tr>
-
-
                                             <td>{{ $upload->course->title }}</td>
-                                            <td>{{ $upload->user->name }}</td>
-
-
+                                            <td>{{ $upload->user->full_name }}</td>
                                             <td>
                                                 @can('admin_categories_edit')
                                                     <a href="/admin/assignments/{{ $upload->id }}/edit"
@@ -49,13 +44,10 @@
                                                 @can('admin_categories_delete')
                                                     @include('admin.includes.delete_button',['url' => '/admin/assignments/'.$upload->id.'/delete'])
                                                 @endcan
-                                                <a href="/admin/assignments/{{ $upload->id }}/"
-                                                    class="btn-transparent btn-sm text-primary">
-                                                     <i class="fa fa-edit"></i>
+
+                                                | <a href="/admin/assignments/download/{{ $upload->id }}" class="btn-sm btn-primary w-10 mt-2">
+                                                    <i class="fas fa-download"></i>
                                                  </a>
-                                                 <a href="/admin/assignments/download/{{$assignment->id}}" class="btn-sm btn-primary w-10 mt-2">
-                                                    Download
-                                                 </a>|
 
                                             </td>
                                         </tr>
