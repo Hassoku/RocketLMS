@@ -125,7 +125,7 @@
             if (result && result.code === 200) {
                 Swal.fire({
                     icon: 'success',
-                    html: '<h3 class="font-20 text-center text-dark-blue py-25">' + saveSuccessLang + '</h3>',
+                    html: '<h3 class="font-20 text-center text-dark-blue py-25">Successfull</h3>',
                     showConfirmButton: false,
                     width: '25rem',
                 });
@@ -206,7 +206,7 @@
             if (result && result.code === 200) {
                 Swal.fire({
                     icon: 'success',
-                    html: '<h3 class="font-20 text-center text-dark-blue">' + saveSuccessLang + '</h3>',
+                    html: '<h3 class="font-20 text-center text-dark-blue">Successfull</h3>',
                     showConfirmButton: false,
                 });
 

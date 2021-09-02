@@ -108,7 +108,7 @@
                                 <div class="d-flex align-items-center justify-content-between">
                                     <a href="">
                                         <h3 class="webinar-title font-weight-bold font-16 text-dark-blue">
-                                            {{ $webinar->title }}
+                                            {{ $webinar->webinar->title }}
                                             <span class="badge badge-dark ml-10 status-badge-dark">{{ trans('webinars.'.$webinar->type) }}</span>
                                         </h3>
                                     </a>
@@ -119,37 +119,37 @@
                                         </button>
 
                                         <div class="dropdown-menu">
-                                            {{-- @if(!empty($webinar->start_date) and ($webinar->start_date > time() or ($webinar->isProgressing() and !empty($nextSession))))
+                                            @if(!empty($webinar->start_date) and ($webinar->start_date > time() or ($webinar->isProgressing() and !empty($nextSession))))
                                                 <button type="button" data-webinar-id="{{ $webinar->id }}" class="join-purchase-webinar webinar-actions btn-transparent d-block">{{ trans('footer.join') }}</button>
-                                            @endif --}}
+                                            @endif
 
-                                            {{-- @if(!empty($webinar->downloadable) or (!empty($webinar->files) and count($webinar->files)))
+                                           @if(!empty($webinar->downloadable) or (!empty($webinar->files) and count($webinar->files)))
                                                 <a href="{{ $webinar->getUrl() }}?tab=content" target="_blank" class="webinar-actions d-block mt-10">{{ trans('home.download') }}</a>
-                                            @endif --}}
+                                            @endif
 
                                             @if($webinar->price > 0)
                                                 <a href="/panel/webinars/{{ $webinar->id }}/invoice" target="_blank" class="webinar-actions d-block mt-10">{{ trans('public.invoice') }}</a>
                                             @endif
 
-                                            {{-- <a href="{{ $webinar->getUrl() }}?tab=reviews" target="_blank" class="webinar-actions d-block mt-10">{{ trans('public.feedback') }}</a> --}}
+                                             <a href="{{ $webinar->getUrl() }}?tab=reviews" target="_blank" class="webinar-actions d-block mt-10">{{ trans('public.feedback') }}</a>
                                         </div>
                                     </div>
                                 </div>
 
                                 {{-- @include(getTemplate() . '.includes.webinar.rate',['rate' => $webinar->getRate()]) --}}
 
-                                {{-- <div class="webinar-price-box mt-15">
-                                    @if($webinar->price > 0)
-                                        @if($webinar->bestTicket() < $webinar->price)
-                                            <span class="real">{{ $currency }}{{ number_format($webinar->bestTicket(),2) }}</span>
-                                            <span class="off ml-10">{{ $currency }}{{ number_format($webinar->price,2) }}</span>
-                                        @else
-                                            <span class="real">{{ $currency }}{{ number_format($webinar->price,2) }}</span>
-                                        @endif
+                                 <div class="webinar-price-box mt-15">
+                                    @if($webinar->webinar->price > 0)
+                                        {{-- @if($webinar->bestTicket() < $webinar->webinar->price) --}}
+                                            {{-- <span class="real">{{ $currency }}{{ number_format($webinar->bestTicket(),2) }}</span> --}}
+                                            <span class="off ml-10">{{ $currency }}{{ number_format($webinar->webinar->price,2) }}</span>
+                                        {{-- @else --}}
+                                            <span class="real">{{ $currency }}{{ number_format($webinar->webinar->price,2) }}</span>
+                                        {{-- @endif --}}
                                     @else
                                         <span class="real">{{ trans('public.free') }}</span>
                                     @endif
-                                </div> --}}
+                                </div>
 
                                 <div class="d-flex align-items-center justify-content-between flex-wrap mt-auto">
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
@@ -159,7 +159,7 @@
 
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
                                         <span class="stat-title">{{ trans('public.category') }}:</span>
-                                        <span class="stat-value">{{ !empty($webinar->category_id) ? $webinar->category->title : '' }}</span>
+                                        {{-- <span class="stat-value">{{ !empty($webinar->webinar->category_id) ? $webinar->category->title : '' }}</span> --}}
                                     </div>
 
                                     {{-- @if($webinar->type == 'webinar')

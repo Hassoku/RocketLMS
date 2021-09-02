@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class OrderItem extends Model
 {
+    use Sluggable;
     public $timestamps = false;
 
     protected $guarded = ['id'];
@@ -15,6 +17,16 @@ class OrderItem extends Model
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
+
     public function order()
     {
         return $this->belongsTo('App\Models\Order', 'order_id', 'id');
@@ -23,6 +35,10 @@ class OrderItem extends Model
     public function webinar()
     {
         return $this->belongsTo('App\Models\Webinar', 'webinar_id', 'id');
+    }
+    public function getUrl()
+    {
+        return url('/course/' . $this->slug);
     }
 
     public function subscribe()

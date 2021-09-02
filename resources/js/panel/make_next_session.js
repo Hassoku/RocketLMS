@@ -96,7 +96,7 @@
                 //window.location.reload();
                 Swal.fire({
                     icon: 'success',
-                    html: '<h3 class="font-20 text-center text-dark-blue py-25">' + saveSuccessLang + '</h3>',
+                    html: '<h3 class="font-20 text-center text-dark-blue py-25">Succssfull</h3>',
                     showConfirmButton: false,
                     width: '25rem',
                 });

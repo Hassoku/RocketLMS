@@ -24,22 +24,19 @@
                             <div class="table-responsive">
                                 <table class="table table-striped font-14">
                                     <tr>
-                                        <th>File</th>
+
                                         <th class="text-left">Title</th>
                                         <th>Course</th>
-                                        
+
                                         <th>Action</th>
                                     </tr>
                                     @foreach($assignments as $assignment)
 
                                         <tr>
-                                            <td>
-                                                {{-- <iframe src="{{ $assignment->file }}" frameborder="0" style="width:30px"></iframe> --}}
-                                                {{-- <img src="{{ $assignment->file }}" width="30" alt=""> --}}
-                                            </td>
+
                                             <td class="text-left">{{ $assignment->title }}</td>
                                             <td>{{ $assignment->course->title }}</td>
-                                          
+
                                             <td>
                                                 @can('admin_categories_edit')
                                                     <a href="/admin/assignments/{{ $assignment->id }}/edit"
@@ -52,7 +49,7 @@
                                                 @endcan
                                             </td>
                                         </tr>
-                                    @endforeach 
+                                    @endforeach
                                 </table>
                             </div>
                         </div>

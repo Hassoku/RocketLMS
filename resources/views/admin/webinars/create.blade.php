@@ -50,7 +50,7 @@
                                                 <select name="type" class="custom-select @error('type')  is-invalid @enderror">
                                                     <option value="webinar" @if((!empty($webinar) and $webinar->isWebinar()) or old('type') == \App\Models\Webinar::$webinar) selected @endif>{{ trans('webinars.webinar') }}</option>
                                                     <option value="course" @if((!empty($webinar) and $webinar->isCourse()) or old('type') == \App\Models\Webinar::$course) selected @endif>{{ trans('product.video_course') }}</option>
-                                                    <option>{{ trans('product.text_course') }} (Paid Plugin)</option>
+                                                    <option>{{ trans('product.text_course') }} </option>
 
                                                 </select>
 
