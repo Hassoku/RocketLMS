@@ -112,7 +112,9 @@
                             <a class="nav-link" href="/admin/assignments">List</a>
                         </li>
 
-
+                        <li class="{{ (request()->is('admin/assignments')) ? 'active' : '' }}">
+                            <a class="nav-link" href="/admin/assignments/uploads">Uploaded Assignment</a>
+                        </li>
                         <li class="{{ (request()->is('admin/assignments/create')) ? 'active' : '' }}">
                             <a class="nav-link" href="/admin/assignments/create">New</a>
                         </li>

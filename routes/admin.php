@@ -164,6 +164,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'web'
         Route::group(['prefix' => 'assignments'], function () {
             Route::get('/', 'AssignmentController@index');
             Route::get('/create', 'AssignmentController@create');
+            Route::get('/uploads', 'AssignmentController@uploads');
             Route::post('/store', 'AssignmentController@store');
             Route::get('/{id}/edit', 'AssignmentController@edit');
             Route::post('/{id}/update', 'AssignmentController@update');

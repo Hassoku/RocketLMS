@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Webinar;
 use App\Models\Category;
 use App\Models\Assignment;
+use App\AssignmentUpload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -33,6 +34,13 @@ class AssignmentController extends Controller
 
         return view('admin.assignments.create', compact('courses'));
     }
+
+    public function uploads(){
+
+        $uploads = AssignmentUpload::with('course')->paginate(5);
+        return view('admin.assignments.uploads',compact('uploads'));
+
+    }e
 
     public function store(Request $request)
     {
