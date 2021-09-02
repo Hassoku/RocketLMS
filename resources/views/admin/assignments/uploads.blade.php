@@ -24,41 +24,48 @@
                             <div class="table-responsive">
                                 <table class="table table-striped font-14">
                                     <tr>
-                                        <th>File</th>
+
                                         <th class="text-left">Title</th>
-                                        <th>Course</th>
-                                        
+                                        <th class="text-left">Submited By</th>
+
                                         <th>Action</th>
                                     </tr>
-                                    @foreach($assignments as $assignment)
+                                    @foreach($uploads as $upload)
 
                                         <tr>
-                                            <td>
-                                                {{-- <iframe src="{{ $assignment->file }}" frameborder="0" style="width:30px"></iframe> --}}
-                                                {{-- <img src="{{ $assignment->file }}" width="30" alt=""> --}}
-                                            </td>
-                                            <td class="text-left">{{ $assignment->title }}</td>
-                                            <td>{{ $assignment->course->title }}</td>
-                                          
+
+
+                                            <td>{{ $upload->course->title }}</td>
+                                            <td>{{ $upload->user->name }}</td>
+
+
                                             <td>
                                                 @can('admin_categories_edit')
-                                                    <a href="/admin/assignments/{{ $assignment->id }}/edit"
+                                                    <a href="/admin/assignments/{{ $upload->id }}/edit"
                                                        class="btn-transparent btn-sm text-primary">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 @endcan
                                                 @can('admin_categories_delete')
-                                                    @include('admin.includes.delete_button',['url' => '/admin/assignments/'.$assignment->id.'/delete'])
+                                                    @include('admin.includes.delete_button',['url' => '/admin/assignments/'.$upload->id.'/delete'])
                                                 @endcan
+                                                <a href="/admin/assignments/{{ $upload->id }}/"
+                                                    class="btn-transparent btn-sm text-primary">
+                                                     <i class="fa fa-edit"></i>
+                                                 </a>
+                                                 <a href="/admin/assignments/download/{{$assignment->id}}" class="btn-sm btn-primary w-10 mt-2">
+                                                    Download
+                                                 </a>|
+
                                             </td>
                                         </tr>
-                                    @endforeach 
+                                    @endforeach
                                 </table>
                             </div>
                         </div>
 
                         <div class="card-footer text-center">
-                            {{ $assignments->links() }}
+                            {{ $uploads->links() }}
                         </div>
                     </div>
                 </div>

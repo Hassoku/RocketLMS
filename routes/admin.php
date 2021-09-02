@@ -169,6 +169,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'web'
             Route::get('/{id}/edit', 'AssignmentController@edit');
             Route::post('/{id}/update', 'AssignmentController@update');
             Route::get('/{id}/delete', 'AssignmentController@destroy');
+            Route::get('download/{id}/', 'AssignmentController@download')->name('download');
 
 
         });

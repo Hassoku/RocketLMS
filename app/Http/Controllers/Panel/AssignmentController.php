@@ -6,6 +6,7 @@ use App\AssignmentUpload;
 use App\Models\Assignment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
@@ -40,12 +41,13 @@ class AssignmentController extends Controller
 
      public function submit_assignment(Request $request){
 
-     
+
 
        $upload = new AssignmentUpload();
-      
+
        $upload->assignment_id = $request->assignment_id;
        $upload->file = $request->file;
+       $upload->user_id = Auth::user()->id;
        if($upload->save()){
            return back()->with('message','Assignment Uploaded');
        }

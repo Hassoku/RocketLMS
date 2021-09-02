@@ -2,8 +2,10 @@
 
 namespace App;
 
+
+use App\User;
+use App\Models\Assignment;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Webinar;
 
 class AssignmentUpload extends Model
 {
@@ -11,6 +13,11 @@ class AssignmentUpload extends Model
 
     public function course(){
 
-        return $this->belongsTo(Webinar::class);
+        return $this->belongsTo(Assignment::class,'assignment_id','id');
+    }
+
+    public function user(){
+
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }

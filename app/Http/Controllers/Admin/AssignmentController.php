@@ -14,7 +14,7 @@ class AssignmentController extends Controller
     public function index()
     {
         $assignments = Assignment::with('course')->paginate(10);
-      
+
 
         return view('admin.assignments.lists',compact('assignments'));
     }
@@ -37,10 +37,10 @@ class AssignmentController extends Controller
 
     public function uploads(){
 
-        $uploads = AssignmentUpload::with('course')->paginate(5);
+        $uploads = AssignmentUpload::with(['course','user'])->paginate(5);
         return view('admin.assignments.uploads',compact('uploads'));
 
-    }e
+    }
 
     public function store(Request $request)
     {
