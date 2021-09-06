@@ -38,10 +38,10 @@
                                 <td>
 
                                         <a href="/panel/assignments/files/{{$assignment->id}}" class="btn-sm btn-primary w-10 mt-2">
-                                           Download
+                                            <i class="fas fa-download"></i>
                                         </a>|
                                         <a href="/panel/assignments/upload/{{ $assignment->id }}" class="btn-sm btn-primary w-10 mt-2">
-                                             Upload
+                                            <i class="fas fa-upload"></i>
                                          </a>
 
 

@@ -114,7 +114,6 @@ class PaymentController extends Controller
 
 
 
-
          $toastData = [
             'title' => "Payment Successful",
             'msg' => "Payment Successful",

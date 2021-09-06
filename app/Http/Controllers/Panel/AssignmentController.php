@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\panel;
 
+use App\User;
 use App\AssignmentUpload;
 use App\Models\Assignment;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class AssignmentController extends Controller
 {
     public function index(){
+
         $assignments = Assignment::with('course')->paginate(5);
 
         return view('web.default.panel.assignments.list',compact('assignments'));

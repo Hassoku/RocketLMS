@@ -44,7 +44,8 @@
         "tzsk/payu": "^5.0",
         "unicodeveloper/laravel-paystack": "1.0.*",
         "unisharp/laravel-filemanager": "^2.1",
-        "vrajroham/laravel-bitpay": "^3.0"
+        "vrajroham/laravel-bitpay": "^3.0",
+        "google/apiclient": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
@@ -73,6 +74,7 @@
         ],
         "files": [
             "app/Helpers/helper.php"
+
         ]
     },
     "autoload-dev": {

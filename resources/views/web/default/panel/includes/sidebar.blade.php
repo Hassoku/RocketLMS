@@ -398,6 +398,14 @@
                 <span class="font-14 text-dark-blue font-weight-500">{{ trans('panel.notifications') }}</span>
             </a>
         </li>
+        <li class="sidenav-item ">
+            <a href="https://classroom.google.com/" class="d-flex align-items-center">
+            <span class="sidenav-notification-icon sidenav-item-icon mr-10">
+                    @include('web.default.panel.includes.sidebar_icons.notifications')
+                </span>
+                <span class="font-14 text-dark-blue font-weight-500">Join Classroom</span>
+            </a>
+        </li>
 
         <li class="sidenav-item {{ (request()->is('panel/setting')) ? 'sidenav-item-active' : '' }}">
             <a href="/panel/setting" class="d-flex align-items-center">
