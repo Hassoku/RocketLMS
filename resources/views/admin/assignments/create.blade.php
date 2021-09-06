@@ -19,7 +19,10 @@
         </div>
 
         <div class="section-body">
+@if (Session::has('message'))
+<p class="alert alert-success">{{ Session::get('message') }}</p>
 
+@endif
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class="card">

@@ -44,6 +44,7 @@ class AssignmentController extends Controller
 
     public function store(Request $request)
     {
+
         $assignment = new Assignment;
 
         $validate  = $request->validate([

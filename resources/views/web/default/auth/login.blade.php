@@ -13,7 +13,7 @@
 
         <div class="row login-container">
 
-            <div class="col-12 col-md-6 pl-0">
+            <div class="col-12 col-md-6 pl-0 img-fluid img-thumbnail">
                 <img src="{{ asset('/frontend/assets/images/a (30).png')}}" class="img-cover" alt="Login">
             </div>
             <div class="col-12 col-md-6">
