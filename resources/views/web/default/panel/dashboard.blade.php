@@ -216,7 +216,7 @@
     <script src="/assets/default/vendors/chartjs/chart.min.js"></script>
 
     <script>
-        ;(function (){ 
+        ;(function (){
         'use strict'
         var offlineSuccess = '{{ trans('panel.offline_success') }}';
         var $chartDataMonths = @json($monthlyChart['months']);

@@ -132,7 +132,7 @@
                         </li> --}}
 
                         <li class="mt-5 {{ (request()->is('panel/webinars')) ? 'active' : '' }}">
-                            <a href="/panel/webinars">{{ trans('panel.my_classess') }}</a>
+                            <a href="/panel/webinars">My Classes</a>
                         </li>
 
                         <li class="mt-5 {{ (request()->is('panel/webinars/invitations')) ? 'active' : '' }}">
@@ -283,7 +283,7 @@
             </div>
         </li>
 
-        <li class="sidenav-item {{ (request()->is('panel/financial') or request()->is('panel/financial/*')) ? 'sidenav-item-active' : '' }}">
+        {{-- <li class="sidenav-item {{ (request()->is('panel/financial') or request()->is('panel/financial/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#financialCollapse" role="button" aria-expanded="false" aria-controls="financialCollapse">
                 <span class="sidenav-item-icon mr-10">
                     @include('web.default.panel.includes.sidebar_icons.financial')
@@ -319,7 +319,7 @@
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> --}}
 {{--
         <li class="sidenav-item {{ (request()->is('panel/support') or request()->is('panel/support/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#supportCollapse" role="button" aria-expanded="false" aria-controls="supportCollapse">

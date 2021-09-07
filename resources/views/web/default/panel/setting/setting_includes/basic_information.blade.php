@@ -25,7 +25,7 @@
 
             <div class="form-group">
                 <label class="input-label">{{ trans('auth.password') }}</label>
-                <input type="password" name="password" value="{{ old('password') }}" class="form-control @error('password')  is-invalid @enderror" placeholder=""/>
+                <input type="password" name="password" class="form-control @error('password')  is-invalid @enderror" />
                 @error('password')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label class="input-label">{{ trans('auth.password_repeat') }}</label>
-                <input type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" class="form-control @error('password_confirmation')  is-invalid @enderror" placeholder=""/>
+                <input type="password" name="password_confirmation"  class="form-control @error('password_confirmation')  is-invalid @enderror" placeholder=""/>
                 @error('password_confirmation')
                 <div class="invalid-feedback">
                     {{ $message }}
