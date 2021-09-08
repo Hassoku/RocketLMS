@@ -93,9 +93,9 @@
                             </li>
                         @endcan()
                         @can('admin_trending_categories')
-                            <li class="{{ (request()->is('admin/categories/trends')) ? 'active' : '' }}">
+                            {{-- <li class="{{ (request()->is('admin/categories/trends')) ? 'active' : '' }}">
                                 <a class="nav-link" href="/admin/categories/trends">{{ trans('admin/main.trends') }}</a>
-                            </li>
+                            </li> --}}
                         @endcan()
                     </ul>
                 </li>
