@@ -52,46 +52,46 @@
                     @if(!empty($dailySalesTypeStatistics))
                         <div class="card card-statistic-2">
                             <div class="card-stats">
-                                <div class="card-stats-title">{{trans('admin/main.daily_sales_type_statistics')}}</div>
+                                <div class="card-stats-title">Statistics</div>
 
                                 <div class="card-stats-items">
                                     <div class="card-stats-item">
-                                        <div class="card-stats-item-count">{{ $dailySalesTypeStatistics['webinarsSales'] }}</div>
+                                        <div class="card-stats-item-count">Classes</div>
                                         <div class="card-stats-item-label">{{trans('admin/main.live_class')}}</div>
                                     </div>
 
                                     <div class="card-stats-item">
-                                        <div class="card-stats-item-count">{{ $dailySalesTypeStatistics['courseSales'] }}</div>
+                                        <div class="card-stats-item-count">Studentes</div>
                                         <div class="card-stats-item-label">{{trans('admin/main.course')}}</div>
                                     </div>
 
-                                    <div class="card-stats-item">
-                                        <div class="card-stats-item-count">{{ $dailySalesTypeStatistics['appointmentSales'] }}</div>
+                                    {{-- <div class="card-stats-item">
+                                        <div class="card-stats-item-count"></div>
                                         <div class="card-stats-item-label">{{trans('admin/main.appointment')}}</div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="card-icon shadow-primary bg-primary">
                                 <i class="fas fa-archive"></i>
                             </div>
-                            <div class="card-wrap">
+                            {{-- <div class="card-wrap">
                                 <div class="card-header">
                                     <h4>{{trans('admin/main.today_sales')}}</h4>
                                 </div>
                                 <div class="card-body">
                                     {{ $dailySalesTypeStatistics['allSales'] }}
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     @endif
                 @endcan
             </div>
 
-
+{{-- 
             <div class="col-lg-4 col-md-4 col-sm-12">
                 @can('admin_general_dashboard_income_statistics')
                     @if(!empty($getIncomeStatistics))
-                        <div class="card card-statistic-2">
+                        {{-- <div class="card card-statistic-2">
                             <div class="card-stats">
                                 <div class="card-stats-title">{{trans('admin/main.income_statistics')}}</div>
 
@@ -126,9 +126,9 @@
                         </div>
                     @endif
                 @endcan
-            </div>
+            </div> --}}
 
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            {{-- <div class="col-lg-4 col-md-4 col-sm-12">
                 @can('admin_general_dashboard_total_sales_statistics')
                     @if(!empty($getTotalSalesStatistics))
                         <div class="card card-statistic-2">
@@ -166,7 +166,7 @@
                         </div>
                     @endif
                 @endcan
-            </div>
+            </div> --}}
         </div>
 
         <div class="row">
@@ -179,10 +179,10 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>{{trans('admin/main.new_sale')}}</h4>
+                                <h4>Course Completed</h4>
                             </div>
                             <div class="card-body">
-                                {{ $getNewSalesCount }}
+                                {{-- {{ $getNewSalesCount }} --}}
                             </div>
                         </div>
                     </a>
@@ -196,10 +196,10 @@
                             <i class="fas fa-comment"></i></div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>{{trans('admin/main.new_comment')}}</h4>
+                                <h4>Latest Courses</h4>
                             </div>
                             <div class="card-body">
-                                {{ $getNewCommentsCount }}
+                               
                             </div>
                         </div>
                     </a>
@@ -213,10 +213,10 @@
                             <i class="far fa-envelope"></i></div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>{{trans('admin/main.new_ticket')}}</h4>
+                                <h4>Categories</h4>
                             </div>
                             <div class="card-body">
-                                {{ $getNewTicketsCount }}
+                            
                             </div>
                         </div>
                     </a>
