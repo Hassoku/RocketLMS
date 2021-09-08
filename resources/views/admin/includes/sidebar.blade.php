@@ -252,9 +252,9 @@
                         @endcan()
 
                         @can('admin_organizations_list')
-                            <li class="{{ (request()->is('admin/organizations')) ? 'active' : '' }}">
+                            {{-- <li class="{{ (request()->is('admin/organizations')) ? 'active' : '' }}">
                                 <a class="nav-link" href="/admin/organizations">{{ trans('admin/main.organizations') }}</a>
-                            </li>
+                            </li> --}}
                         @endcan()
 
                         @can('admin_users_create')
