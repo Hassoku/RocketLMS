@@ -487,7 +487,7 @@
                 $authUser->can('admin_testimonials') or
                 $authUser->can('admin_tags')
             )
-                <li class="menu-header">{{ trans('admin/main.content') }}</li>
+                {{-- <li class="menu-header">{{ trans('admin/main.content') }}</li> --}}
             @endif
 
             {{-- @can('admin_blog')
@@ -574,7 +574,7 @@
             @endcan --}}
 
             @can('admin_testimonials')
-                <li class="nav-item dropdown {{ (request()->is('admin/testimonials*')) ? 'active' : '' }}">
+                {{-- <li class="nav-item dropdown {{ (request()->is('admin/testimonials*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-address-card"></i>
                         <span>{{ trans('admin/main.testimonials') }}</span>
@@ -592,7 +592,7 @@
                             </li>
                         @endcan()
                     </ul>
-                </li>
+                </li> --}}
             @endcan
 
             {{-- @can('admin_tags')
@@ -798,7 +798,7 @@
             @endcan--}}
 
             @can('admin_promotion')
-                <li class="nav-item dropdown {{ (request()->is('admin/financial/promotions*')) ? 'active' : '' }}">
+                {{-- <li class="nav-item dropdown {{ (request()->is('admin/financial/promotions*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-rocket"></i>
                         <span>{{ trans('admin/main.content_promotion') }}</span>
@@ -821,7 +821,7 @@
                             </li>
                         @endcan
                     </ul>
-                </li>
+                </li> --}}
             @endcan
 
             {{--@can('admin_advertising')
