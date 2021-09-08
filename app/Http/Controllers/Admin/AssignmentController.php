@@ -59,6 +59,7 @@ class AssignmentController extends Controller
         $assignment->file = $request->file;
         $assignment->webinar_id = $request->course;
         $assignment->description = $request->description;
+        $assignment->deadline = $request->deadline;
         $assignment->save();
 
 

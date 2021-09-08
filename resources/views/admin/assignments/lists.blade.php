@@ -27,7 +27,7 @@
 
                                         <th class="text-left">Title</th>
                                         <th>Course</th>
-
+                                         <th>Dealine</th>
                                         <th>Action</th>
                                     </tr>
                                     @foreach($assignments as $assignment)
@@ -36,6 +36,7 @@
 
                                             <td class="text-left">{{ $assignment->title }}</td>
                                             <td>{{ $assignment->course->title }}</td>
+                                            <td>{{ $assignment->deadline }}</td>
 
                                             <td>
                                                 @can('admin_categories_edit')

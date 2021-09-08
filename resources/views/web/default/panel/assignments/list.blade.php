@@ -22,7 +22,7 @@
                             <th>File</th>
                             <th class="text-left">Title</th>
                             <th>Course</th>
-
+                            <th>Deadline</th>
                             <th>Action</th>
                         </tr>
                         @foreach($assignments as $assignment)
@@ -34,6 +34,7 @@
                                 </td>
                                 <td class="text-left">{{ $assignment->title }}</td>
                                 <td>{{ $assignment->course->title }}</td>
+                                <td>{{ $assignment->dealine }}</td>
 
                                 <td>
 

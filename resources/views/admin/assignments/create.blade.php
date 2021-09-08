@@ -72,6 +72,15 @@
                                     </div>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                   <label>DeadLine</label>
+                                   <input type="date" name="deadline" class="form-control">
+                                    @error('deadline')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
 
                                 <div class="form-group">
                                     <label class="input-label">File</label>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\panel;
 
 use App\User;
+use Carbon\Carbon;
 use App\AssignmentUpload;
 use App\Models\Assignment;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +15,13 @@ class AssignmentController extends Controller
 {
     public function index(){
 
-        $assignments = Assignment::with('course')->paginate(5);
+
+
+
+       $today=  date('Y-m-d');
+
+        $assignments = Assignment::whereDate('deadline', '>', Carbon::now())->with('course')->paginate(5);
+    
 
         return view('web.default.panel.assignments.list',compact('assignments'));
     }
