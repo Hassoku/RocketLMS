@@ -56,13 +56,13 @@
                                 <a class="nav-link @if(!empty($sidebarBeeps['courses']) and $sidebarBeeps['courses']) beep beep-sidebar @endif" href="/admin/webinars?type=course">{{ trans('admin/main.courses') }}</a>
                             </li>
 
-                            <li class="{{ (request()->is('admin/webinars') and request()->get('type') == 'webinar') ? 'active' : '' }}">
+                            {{-- <li class="{{ (request()->is('admin/webinars') and request()->get('type') == 'webinar') ? 'active' : '' }}">
                                 <a class="nav-link @if(!empty($sidebarBeeps['webinars']) and $sidebarBeeps['webinars']) beep beep-sidebar @endif" href="/admin/webinars?type=webinar">{{ trans('admin/main.live_classes') }}</a>
-                            </li>
+                            </li> --}}
 
-                            <li class="{{ (request()->is('admin/webinars') and request()->get('type') == 'text_lesson') ? 'active' : '' }}">
+                            {{-- <li class="{{ (request()->is('admin/webinars') and request()->get('type') == 'text_lesson') ? 'active' : '' }}">
                                 <a class="nav-link @if(!empty($sidebarBeeps['textLessons']) and $sidebarBeeps['textLessons']) beep beep-sidebar @endif" href="/admin/webinars?type=text_lesson">{{ trans('admin/main.text_courses') }}</a>
-                            </li>
+                            </li> --}}
                         @endcan()
 
                         @can('admin_webinars_create')
@@ -616,13 +616,13 @@
                 </li>
             @endcan() --}}
 
-            @if($authUser->can('admin_documents') or
+            {{-- @if($authUser->can('admin_documents') or
                 $authUser->can('admin_sales_list') or
                 $authUser->can('admin_payouts') or
                 $authUser->can('admin_offline_payments_list') or
                 $authUser->can('admin_subscribe')
-            )
-                <li class="menu-header">{{ trans('admin/main.financial') }}</li>
+            ) --}}
+                {{-- <li class="menu-header">{{ trans('admin/main.financial') }}</li>
             @endif
 
             @can('admin_documents')
@@ -645,9 +645,9 @@
                             </li>
                         @endcan
                     </ul>
-                </li> --}}
+                </li>
             @endcan
-
+{{--
             @can('admin_sales_list')
                 <li class="{{ (request()->is('admin/financial/sales*')) ? 'active' : '' }}">
                     <a href="/admin/financial/sales" class="nav-link">
@@ -655,10 +655,10 @@
                         <span>{{ trans('admin/main.sales_list') }}</span>
                     </a>
                 </li>
-            @endcan
+            @endcan --}}
 
             @can('admin_payouts')
-                <li class="nav-item dropdown {{ (request()->is('admin/financial/payouts*')) ? 'active' : '' }}">
+                {{-- <li class="nav-item dropdown {{ (request()->is('admin/financial/payouts*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-credit-card"></i> <span>{{ trans('admin/main.payout') }}</span></a>
                     <ul class="dropdown-menu">
                         @can('admin_payouts_list')
@@ -677,11 +677,11 @@
                             </li>
                         @endcan
                     </ul>
-                </li>
+                </li> --}}
             @endcan
 
             @can('admin_offline_payments_list')
-                <li class="nav-item dropdown {{ (request()->is('admin/financial/offline_payments*')) ? 'active' : '' }}">
+                {{-- <li class="nav-item dropdown {{ (request()->is('admin/financial/offline_payments*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-university"></i> <span>{{ trans('admin/main.offline_payments') }}</span></a>
                     <ul class="dropdown-menu">
                         <li class="{{ (request()->is('admin/financial/offline_payments') and request()->get('page_type') == 'requests') ? 'active' : '' }}">
@@ -696,11 +696,11 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             @endcan
 
             @can('admin_subscribe')
-                <li class="nav-item dropdown {{ (request()->is('admin/financial/subscribes*')) ? 'active' : '' }}">
+                {{-- <li class="nav-item dropdown {{ (request()->is('admin/financial/subscribes*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-cart-plus"></i>
                         <span>{{ trans('admin/main.subscribes') }}</span>
@@ -718,7 +718,7 @@
                             </li>
                         @endcan
                     </ul>
-                </li>
+                </li> --}}
             @endcan
 
             @if($authUser->can('admin_discount_codes') or
