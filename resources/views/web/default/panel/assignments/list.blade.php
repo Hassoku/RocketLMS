@@ -34,7 +34,9 @@
                                 </td>
                                 <td class="text-left">{{ $assignment->title }}</td>
                                 <td>{{ $assignment->course->title }}</td>
-                                <td>{{ $assignment->dealine }}</td>
+                              
+                                <td>{{ $assignment->deadline }}</td>
+                                
 
                                 <td>
 
