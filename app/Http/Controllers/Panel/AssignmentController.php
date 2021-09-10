@@ -21,7 +21,7 @@ class AssignmentController extends Controller
        $today=  date('Y-m-d');
 
         $assignments = Assignment::whereDate('deadline', '>', Carbon::now())->with('course')->paginate(5);
-    
+
 
         return view('web.default.panel.assignments.list',compact('assignments'));
     }

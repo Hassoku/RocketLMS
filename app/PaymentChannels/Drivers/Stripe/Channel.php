@@ -32,6 +32,7 @@ class Channel implements IChannel
 
 
         $price = $order->total_amount;
+        
         $generalSettings = getGeneralSettings();
         $currency = currency();
 
